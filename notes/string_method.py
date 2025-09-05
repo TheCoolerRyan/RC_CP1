@@ -12,8 +12,8 @@ subject = "Computer Programing 1!"
 #color = input("What is your favorite color?").strip().title()
 #print(f"That is cool. I like {color} too!")
 
-#full_name = input("What is your full name?").strip().title()
-#print("That is cool {full_name}. I like {color} too!".format(full_name = full_name, color = color))
+full_name = input("What is your full name?").strip().title()
+print("That is cool {full_name}. I like {color} too!".format(full_name = full_name, color = color))
 
 pi = "3.1415926535"
 
