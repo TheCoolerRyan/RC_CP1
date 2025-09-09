@@ -1,7 +1,7 @@
 #RC, 1st, Basic Calculator.
 print("This is a basic calculator where you will give me two numbers and will be able to do different equations with them until you want to stop.")
-number1 = int(input("Give me the first number of your wanted eqaution!".strip()))
-number2 = int(input("Give me the second number of your wanted eqaution!".strip()))
+number1 = float(input("Give me the first number of your wanted eqaution!".strip()))
+number2 = float(input("Give me the second number of your wanted eqaution!".strip()))
 
 start = True
 
