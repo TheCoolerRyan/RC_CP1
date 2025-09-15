@@ -8,7 +8,7 @@ mon_earned = float(f"{mon_earned:.2f}")
 crew_men = int(input("How many crew members are there? (Not encluding the captin and the first mate.)\n".strip()))
 
 calculation = int(2 + crew_men)
-shares = float(f"{mon_earned / calculation:.2f}")
+shares = round(mon_earned / calculation, 2)
 captin = shares*7
 first_mate = shares*3
 crew_need = shares-500
