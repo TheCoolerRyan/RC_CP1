@@ -14,8 +14,8 @@ first_mate = shares*3
 crew_need = shares-500
 
 
-print(f"\nHow much was earned: {mon_earned:.2f}!")
+print(f"\nHow much was earned: ${mon_earned:.2f}!")
 print(f"\nHow many crew members there are: {crew_men}!")
-print(f"\nThe captain gets: {captin:.2f}!")
-print(f"\nThe first mate gets: {first_mate:.2f}!")
-print(f"\nThe crew still needs: {crew_need:.2f}!")
+print(f"\nThe captain gets: ${captin:.2f}!")
+print(f"\nThe first mate gets: ${first_mate:.2f}!")
+print(f"\nThe crew still needs: ${crew_need:.2f}!")
