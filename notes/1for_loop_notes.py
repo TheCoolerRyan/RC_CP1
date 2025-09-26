@@ -1,5 +1,5 @@
 #RC, 1st, For loops
-info = {1:"Apple", 2:5}
+info = {1:"Apple", 2:5, "Chess":43}
 
 
 #Print all       key names    in the dictonary, one by one:
@@ -25,3 +25,4 @@ for x in info.keys():
 #Loop through both keys and values, by using the items() method:
 for x, y in info.items():
     print(x,y)
+
