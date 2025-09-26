@@ -12,14 +12,20 @@ def start_game():
         if attempts >= max_attempts:     # We put this in the wrong spot, Logic, You had 11 attempts instead of ten and if you got it right on the 11 it would just say you ran out of guesses.
             print(f"Sorry, you've used all {max_attempts} attempts. The number was {number_to_guess}.")
             game_over = True
-        guess = int(input("Enter your guess: "))  #It was a string instead of a integer, Syntax, made it so when it checked if it was greater then it would come up with an error and break everything.
-        if guess == number_to_guess:    #The elif was an if instead of an elif, Syntax, You can't have to ifs right after each other.
+        guess = int(input("Enter your guess: "))  #It was a string instead of a integer, Run time, made it so when it checked if it was greater then it would come up with an error and break everything.
+        if guess == number_to_guess:  
             print("Congratulations! You've guessed the number!")
             game_over = True
         elif guess > number_to_guess:
-            print("Too high! Try again.")
+            if attempts >= max_attempts:
+                pass
+            else:                          # There was nothing to stop them from saying try again when it was just going to tell you that you have no more attempts, Logic, Confused the user and complicated unecesary things.
+                print("Too high! Try again.")
         elif guess < number_to_guess:
-            print("Too low! Try again.")  
+            if attempts >= max_attempts:
+                pass
+            else:
+                print("Too low! Try again.")  
         attempts += 1     #The attempts never went up, Runtime, made it so you had ifinite attempts.
         continue
     print("Game Over. Thanks for playing!")
