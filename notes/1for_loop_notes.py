@@ -1,5 +1,5 @@
 #RC, 1st, For loops
-info = {1:"Apple", 2:5, "Chess":43}
+info = {1:"Apple","Chess": 43}
 
 
 #Print all       key names    in the dictonary, one by one:
