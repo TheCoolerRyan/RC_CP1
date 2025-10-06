@@ -47,6 +47,9 @@ while win == False:
         choice2 = "Paper"
     elif choice2 == 3:
         choice2 = "Scissors"
+    else:
+        print(f"{choice2} is not an option! >:( One point will be added to the bot as a penalty.")
+        bot_win += 1
 
 
 
