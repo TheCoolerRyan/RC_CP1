@@ -1,5 +1,33 @@
 #For fun rock paper scissors!
 print("This is a program that mimics the game rock paper scissors! I will ask you for a number 1-3, 1 = Rock, 2 = Paper, 3 = scissors. You will play against a bot, 1st to 3 victorys wins it all")
+
+rock ="""
+     _______
+    ---'    )
+           (____)
+          (_____)
+          (____)
+    ---.__(___)
+"""
+paper = """
+_______
+    ---'    )____
+           ______)
+          _______)
+          _______)
+    ---.__________)
+"""
+
+scissors = """
+_______
+    ---'    )____
+           ______)
+          __________)
+          (____)
+    ---.__(___)
+"""
+
+
 bot_win = 0
 human_win = 0
 win = False
@@ -19,42 +47,45 @@ while win == False:
         choice2 = "Paper"
     elif choice2 == 3:
         choice2 = "Scissors"
+    else:
+        print(f"{choice2} is not an option! >:( One point will be added to the bot as a penalty.")
+        bot_win += 1
 
 
 
 
     if choice == "Rock" and  choice2 == "Rock":
-        print(f"Its a tie! The bot chose {choice} and you chose {choice2}!")
+        print(f"Its a tie! The bot chose {choice}\n{rock} \nand you chose {choice2}\n{rock}!")
 
     if choice == "Rock" and  choice2 == "Paper":
-        print(f"You got a point! The bot chose {choice} and you chose {choice2}!")
+        print(f"You got a point! The bot chose {choice}\n{rock} \nand you chose {choice2}\n{paper}!")
         human_win += 1
 
     if choice == "Rock" and  choice2 == "Scissors":
-        print(f"Oh no! The bot got a point! The bot chose {choice} and you chose {choice2}")
+        print(f"Oh no! The bot got a point! The bot chose {choice}\n{rock} \nand you chose {choice2}\n{scissors}!")
         bot_win += 1
 
     if choice == "Paper" and  choice2 == "Rock":
-        print(f"Oh no! The bot got a point! The bot chose {choice} and you chose {choice2}!")
+        print(f"Oh no! The bot got a point! The bot chose {choice}\n{paper} \nand you chose {choice2}\n{rock}!")
         bot_win += 1
     
     if choice == "Paper" and  choice2 == "Paper":
-        print(f"Its a tie! The bot chose {choice} and you chose {choice2}!")
+        print(f"Its a tie! The bot chose {choice}\n{paper} \nand you chose {choice2}\n{paper}!")
     
     if choice == "Paper" and  choice2 == "Scissors":
-        print(f"You got a point! The bot got a point! The bot chose {choice} and you chose {choice2}!")
+        print(f"You got a point! The bot got a point! The bot chose {choice}\n{paper} \nand you chose {choice2}\n{scissors}!")
         human_win += 1
     
     if choice == "Scissors" and  choice2 == "Rock":
-        print(f"You got a point! The bot chose {choice} and you chose {choice2}!")
+        print(f"You got a point! The bot chose {choice} \n{scissors} \nand you chose {choice2}\n{rock}!")
         human_win += 1
     
     if choice == "Scissors" and  choice2 == "Paper":
-        print(f"Oh no! The bot got a point! The bot chose {choice} and you chose {choice2}!")
+        print(f"Oh no! The bot got a point! The bot chose {choice} \n{scissors} \nand you chose {choice2}\n{paper}!")
         bot_win += 1
     
     if choice == "Scissors" and  choice2 == "Scissors":
-        print(f"Its a tie! The bot chose {choice} and you chose {choice2}!")
+        print(f"Its a tie! The bot chose {choice} \n{scissors} \nand you chose {choice2} \n{scissors}!")
 
     print(f"\nYour score is: {human_win}\nThe bot's score is: {bot_win}")
 
