@@ -1,0 +1,19 @@
+#RC, 1st, Tic Tac Psuedocode
+
+Make a lists for the grid of tic tac toe.
+
+Bring in random(A generator that can get random numbers).
+
+Make game_finished false so loop keeps going.
+
+Make a empty list(containter) for the numbers that were picked to be put in
+
+
+
+
+creat function for win statments and grid
+    if grid spot = x and grid spot2 = x and grid spot 3 = X
+    reasign game_finished to false.
+^
+Repeat for all possible win statments X and O
+

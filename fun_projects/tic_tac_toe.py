@@ -12,7 +12,7 @@ import random
 
 game_finished = False
 
-repeat = 1
+
 taken_list = []
 
 def win(grid, game_finished):
