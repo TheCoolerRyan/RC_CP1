@@ -4,16 +4,158 @@ Make a lists for the grid of tic tac toe.
 
 Bring in random(A generator that can get random numbers).
 
-Make game_finished false so loop keeps going.
+Make game_finished = false so loop keeps going.
 
 Make a empty list(containter) for the numbers that were picked to be put in
 
-
+Grid will look like-
+     Index of lists       
+        0  1  2
+List 0  _ | _ | _
+List 1  _ | _ | _
+List 2    |   |
 
 
 creat function for win statments and grid
-    if grid spot = x and grid spot2 = x and grid spot 3 = X
-    reasign game_finished to false.
-^
-Repeat for all possible win statments X and O
+         List|Index
+    if grid[0][0] = "X" and grid[0][1]="X" and grid[0][2]="X":
+         show("X wins")
+         set game_finished to True
+    or if grid[1][0] = "X" and grid[1][1]="X" and grid[1][2]="X":
+        show("X wins")
+        set game_finished to True
+    or if grid[2][0] = "X" and grid[2][1]="X" and grid[2][2]="X":
+        show("X wins")
+        set game_finished to True
+    or if grid[0][0] = "O" and grid[0][1]="O" and grid[0][2]="O":
+        show("O wins")
+        set game_finished to True
+    or if grid[1][0] = "O" and grid[1][1]="O" and grid[1][2]="O":
+        show("O wins")
+        set game_finished to True
+    or if grid[2][0] = "O" and grid[2][1]="O" and grid[2][2]="O":
+        show("O wins")
+        set game_finished to True
+    or if grid[0][0] = "X" and grid[1][0]="X" and grid[2][0]="X":
+        show("X wins")
+        set game_finished to True
+    or if grid[0][0] = "X" and grid[1][1]="X" and grid[2][2]="X":
+        show("X wins")
+        set game_finished to True
+    or if grid[0][2] = "X" and grid[1][2]="X" and grid[2][2]="X":
+        show("X wins")
+        set game_finished to True
+    or if grid[0][0] = "X" and grid[1][1]="X" and grid[2][2]="X":
+        show("X wins")
+        set game_finished to True
+    or if grid[0][2] = "X" and grid[1][1]="X" and grid[2][0]="X":
+        show("X wins")
+        set game_finished to True
+    or if grid[0][1] = "X" and grid[1][1]="X" and grid[2][1]="X":
+        show("X wins")
+        set game_finished to True
+    or if grid[0][0] = "O" and grid[1][0]="O" and grid[2][0]="O":
+        show("O wins")
+        set game_finished to True
+    or if grid[0][0] = "O" and grid[1][1]="O" and grid[2][2]="O":
+        show("O wins")
+        set game_finished to True
+    or if grid[0][2] = "O" and grid[1][2]="O" and grid[2][2]="O":
+        show("O wins")
+        set game_finished to True
+    or if grid[0][0] = "O" and grid[1][1]="O" and grid[2][2]="O":
+        show("O wins")
+        set game_finished to True
+    or if grid[0][2] = "O" and grid[1][1]="O" and grid[2][0]="O":
+        show("O wins")
+        set game_finished to True
+    or if grid[0][1] = "O" and grid[1][1]="O" and grid[2][1]="O":
+        show("O wins")
+        set game_finished to True
+    or if all spots in grid are "X" or "O" 
+        show("It's a tie.")
+        set game_finished to True
 
+
+
+
+While game is not finished, make the bot pick its spot:
+    random_integer set to random number using random.randint
+    
+    game finished when statement above is true.
+
+    If chosen number is already picked, pick a different number
+
+    else:
+        Add chosen number to taken list
+
+        if chosen number is 1:
+         then put grid spots [0][0] to equal 1
+
+        or if chosen number is 1:
+         then put grid spots [0][1] to equal 1
+        
+        or if chosen number is 1:
+         then put grid spots [0][2] to equal 1
+        
+        or if chosen number is 1:
+         then put grid spots [1][0] to equal 1
+
+        or if chosen number is 1:
+         then put grid spots [1][1] to equal 1
+
+        or if chosen number is 1:
+         then put grid spots [1][2] to equal 1
+
+        or if chosen number is 1:
+         then put grid spots [2][0] to equal 1
+
+        or if chosen number is 1:
+         then put grid spots [2][1] to equal 1
+
+        or if chosen number is 1:
+         then put grid spots [2][2] to equal 1
+
+        Take the lists in grid:
+            show lists one after the other
+        
+        Bring in numbers from win function
+
+        if game_finished is True:
+            Stop program
+        else:
+            pass
+
+
+    User chose
+
+    if game finished isn't True:
+        Ask user to pick one of the unchosen spot 1-9
+    
+    if chosen spot is in the taken spot list:
+        show sentance saying that it is taken and then continue
+    else:
+        add chosen spot to list of taken spots
+
+        if spot = 1:
+           set grid[0][0]="X"
+        or if spot = 2:
+           set grid[0][1] ="X"
+        or if spot = 3:
+           set grid[0][2] ="X"
+        or if spot = 4:
+           set grid[1][0]="X"
+        or if spot = 5: 
+           set grid[1][1]="X"
+        or if spot = 6:
+           set grid[1][2] ="X"
+        or if spot = 7:
+           set grid[2][0] ="X"
+        or if spot = 8:
+           set grid[2][1] ="X"
+        or if spot = 9:
+           set grid[2][2] ="X"
+
+    bring in values from the win function (examples are the grid and if the game is finished)
+    if game_finished is true:
+    end program with the break statemetn.
