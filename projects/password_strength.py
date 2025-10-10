@@ -1,8 +1,10 @@
 #RC, 1st, Password strenght.
 
-#import function to check for special charecters and spe_char
-import re
-spe_char = False
+#Bonus asceart
+
+
+
+
 # Make the variable for the while loop.
 start = True
 #Explain what it is
@@ -11,7 +13,7 @@ while start == True:
     #set cap & lower & has digit to No
     cap = "No"
     lower = "No"
-    len = "No"
+    lens = "No"
     digit = "No"
     special = "No"
     has_digit = False
@@ -25,7 +27,7 @@ while start == True:
     length = len(password)
     if length >= 8:
         score += 1
-        len = "Yes"
+        lens = "Yes"
     #Use .isupper() to check if there is an uppercase
         #Check if true, if true -
         # Add + 1 to score
@@ -58,25 +60,28 @@ while start == True:
         if "!" in password or "@" in password or "#" in password or "$" in password or "%" in password or "^" in password or "&" in password or "*" in password or "(" in password or ")" in password or "_" in password or "+" in password or "-" in password or "=" in password or "[" in password or "]" in password or "{" in password or "}" in password or "|" in password or ";" in password or ":" in password or "." in password or "<" in password or ">" in password or "?" in password or "'" in password or '"' in password:
             score += 1
             special = "Yes"
-    print(score)
-    #Make if statement for if score =
-
-    #Make if statement for if score =
-
-    #Make if statement for if score =
-
-    #Make if statement for if score =
-
-    #Make if statement for if score =
-
-    #Make if statement for if score =
+    
 
 
-    #If thing (legth, Upper, ...) = to 1
-        # Set it to Yes
-    #Else
-        #SET IT TO NO
-
-    #Display with f string of all things and if they pass or not.
-
-
+    #Calculate if score is good.
+    if score > -1 and score <= 3:
+        strength = " weak..."
+    elif score == 3:
+        strength = " moderate."
+    elif score == 4:
+        strength = " strong!"
+    elif score == 5:
+        strength = " very strong!!!"
+    else:
+        strength = "... How did you do that..."
+    #Telling them their scores
+    print(f"Length requirement: {lens}\nUppercase requirement: {cap}\nLowercase requirement: {lower}\nNumber requirement: {digit}\nSpecial character requirement: {special}\nYour final score is {score}... \nThats{strength}")
+    if score == 5:
+         pass    #Make ascyart
+ #Make it possible to quit
+    quit = int(input("Would you like to continue? If you want to stay, put 1, but if you want to quit, put 2."))
+    if quit == 1:
+        pass
+    else:
+        start = False
+        print("Goodbye...")
