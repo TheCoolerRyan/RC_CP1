@@ -145,4 +145,3 @@ while game_finished == False:
     if game_finished is True:
         break
 
-    
