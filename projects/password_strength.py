@@ -1,16 +1,57 @@
 #RC, 1st, Password strenght.
 
-#Bonus asceart
-
-
-
+#Bonus ascii arts-
+Five = """
+   ████████   
+ ██        ██  
+ ██  |  |  ██
+ ██ |____| ██  
+ ██        ██  
+   ████████   
+      ██      
+    ██████    
+  ██  ██  ██  
+██    ██    ██
+██    ██    ██
+██    ██    ██
+      ██      
+      ██      
+    ██  ██    
+  ██      ██  
+  ██      ██  
+  ██      ██  
+  ██      ██  
+  ██      ██
+"""
+One = """
+   ████████   
+ ██        ██  
+ ██  |  |  ██
+ ██  ____  ██  
+ ██ |    | ██  
+   ████████   
+      ██      
+    ██████    
+  ██  ██  ██  
+██    ██    ██
+██    ██    ██
+██    ██    ██
+      ██      
+      ██      
+    ██  ██    
+  ██      ██  
+  ██      ██  
+  ██      ██  
+  ██      ██  
+  ██      ██
+"""
 
 # Make the variable for the while loop.
 start = True
 #Explain what it is
 print("This is a password checker. Your password will be checked to see if it is over or = to 8 in length, has an uppercase, has a lowercase, has a number, and if it has a special character. Each can give you one point if it is in your password. 5 is the best, 0 is the worst.")
 while start == True:
-    #set cap & lower & has digit to No
+    #set the varibales cheecking if they get the point to No
     cap = "No"
     lower = "No"
     lens = "No"
@@ -61,8 +102,6 @@ while start == True:
             score += 1
             special = "Yes"
     
-
-
     #Calculate if score is good.
     if score > -1 and score <= 3:
         strength = " weak..."
@@ -76,8 +115,12 @@ while start == True:
         strength = "... How did you do that..."
     #Telling them their scores
     print(f"Length requirement: {lens}\nUppercase requirement: {cap}\nLowercase requirement: {lower}\nNumber requirement: {digit}\nSpecial character requirement: {special}\nYour final score is {score}... \nThats{strength}")
+    #Input ascyart if they have a very strong password
     if score == 5:
-         pass    #Make ascyart
+        print(Five)  
+    #Input ascii art if they have very weak password.
+    if score <= 1:
+        print(One)
  #Make it possible to quit
     quit = int(input("Would you like to continue? If you want to stay, put 1, but if you want to quit, put 2."))
     if quit == 1:
@@ -85,3 +128,4 @@ while start == True:
     else:
         start = False
         print("Goodbye...")
+        print(One)
