@@ -103,7 +103,7 @@ while start == True:
             special = "Yes"
     
     #Calculate if score is good.
-    if score > -1 and score <= 3:
+    if score > -1 and score <= 2:
         strength = " weak..."
     elif score == 3:
         strength = " moderate."
