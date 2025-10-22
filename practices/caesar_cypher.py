@@ -7,21 +7,27 @@ def translator(mode, text, shift_value):
     if mode == 1:
         for char in text:
             if char.isalpha():
-                if ord(char) > 96 and ord(char) < 123:
+                if ord(char) > 96 and ord(char) < 123 and char != " ":
                     add = (chr(ord(char) + shift_value))
                     if ord(add) > 122:
                         add = ord(add)
                         add = chr(add - 26)
+                    if ord(add) < 97:
+                        add = ord(add)
+                        add = chr(add + 26)
                     result +=  add
-                if ord(char) > 64 and ord(char) < 91:
+                if ord(char) > 64 and ord(char) < 91 and char != " ":
                     add = (chr(ord(char) + shift_value))
                     if ord(add) > 90:
                         add = ord(add)
                         add = chr(add - 26)
+                    if ord(add) < 97:
+                        add = ord(add)
+                        add = chr(add + 26)
                     result +=  add
     if mode == 2:
         for char in text:
-            if char.isalpha():
+            if char.isalpha() and char != " ":
                 if ord(char) > 96 and ord(char) < 123:
                     add = (chr(ord(char) - shift_value))
                     if ord(add) > 122:
@@ -46,3 +52,6 @@ while start == True:
     print(translator(mode, text, shift_value))
 #Lowercase is 97 to 122
 #Uppercase is 65 to 90
+
+
+#Fix space problem.
