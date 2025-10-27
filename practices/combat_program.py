@@ -174,4 +174,3 @@ while game == True:
         game = False
             
 
-#Create if statement that checks if you want to restart, if you do, reset monster stats and job selection.
