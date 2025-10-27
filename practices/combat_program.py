@@ -164,7 +164,7 @@ while game == True:
         elif health2 <= 0:
             print("You have killed the Dire Wolf, way to go!")    
             attacking = False
-        print(f"Health: {health} \nDefense: {defense} \nAttack: {attack} \n Damage: {damage}")
+        print(f"Health: {health} \nDefense: {defense} \nAttack: {attack} \nDamage: {damage}")
     again = input("Would you like to fight again? If you want to fight all over again put 1, else put 2.")
     if again == "1":
         game = True
@@ -172,5 +172,3 @@ while game == True:
     else:
         print("Good game.")
         game = False
-            
-
