@@ -10,7 +10,7 @@ wn = turtle.Screen()
 wn.title("My Turtle Graphics")
 #Change color of screen because white is boring
 wn.bgcolor("lightblue")
-
+wn.setup(width= 1500 , height= 1200)
 #Create finishline turtle
 f_line = turtle.Turtle()
 #Hide the turtle
