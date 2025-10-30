@@ -117,6 +117,7 @@ def turtles(black, green, red, yellow, orange, purple):
         #If statement to check if they reached the finish line
         if black.xcor() > 499:
             #Print of that they won
+            writing.color("black")
             writing.write("Black Wins!",font =("Arial", 50, "bold"))
             #Set game to false to stop movement
             game = False
@@ -127,6 +128,7 @@ def turtles(black, green, red, yellow, orange, purple):
         #If statement to check if they reached the finish line
         if green.xcor() > 499:
             #Print of that they won
+            writing.color("green")
             writing.write("Green Wins!",font =("Arial", 50, "bold"))
             #Set game to false to stop movement
             game = False
@@ -137,6 +139,7 @@ def turtles(black, green, red, yellow, orange, purple):
         #If statement to check if they reached the finish line
         if red.xcor() > 499:
             #Print of that they won
+            writing.color("red")
             writing.write("Red Wins!",font =("Arial", 50, "bold"))
             #Set game to false to stop movement
             game = False
@@ -147,6 +150,7 @@ def turtles(black, green, red, yellow, orange, purple):
         #If statement to check if they reached the finish line
         if yellow.xcor() > 499:
             #Print of that they won
+            writing.color("yellow")
             writing.write("Yellow Wins!",font =("Arial", 50, "bold"))
             #Set game to false to stop movement
             game = False
@@ -157,6 +161,7 @@ def turtles(black, green, red, yellow, orange, purple):
         #If statement to check if they reached the finish line
         if orange.xcor() > 499:
             #Print of that they won
+            writing.color("orange")
             writing.write("Orange Wins!",font =("Arial", 50, "bold"))
             #Set game to false to stop movement
             game = False
@@ -167,6 +172,7 @@ def turtles(black, green, red, yellow, orange, purple):
         #If statement to check if they reached the finish line
         if purple.xcor() > 499:
             #Print of that they won
+            writing.color("purple")
             writing.write("Purple Wins!",font =("Arial", 50, "bold"))
             #Set game to false to stop movement
             game = False
