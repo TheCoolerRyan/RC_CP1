@@ -109,10 +109,10 @@ def turtles(black, green, red, yellow, orange, purple):
     #Update the window and make it constently continue to update again
     wn.update()
     wn.tracer(1)
-
     #Loop to keep the turtles moving until one reaches the finish line
     while game == True:
         #Create movement for turtle
+        black.right(random.randint(-50,50))
         black.forward(random.randint(1,51))
         #If statement to check if they reached the finish line
         if black.xcor() > 499:
@@ -124,6 +124,7 @@ def turtles(black, green, red, yellow, orange, purple):
             #Create break to stop them from accidently moving one more time and breaking things.
             break
         #Create movement for turtle
+        green.right(random.randint(-50,50))
         green.forward(random.randint(1,51))
         #If statement to check if they reached the finish line
         if green.xcor() > 499:
@@ -135,6 +136,7 @@ def turtles(black, green, red, yellow, orange, purple):
             #Create break to stop them from accidently moving one more time and breaking things.
             break
         #Create movement for turtle
+        red.right(random.randint(-50,50))
         red.forward(random.randint(1,51))
         #If statement to check if they reached the finish line
         if red.xcor() > 499:
@@ -146,6 +148,7 @@ def turtles(black, green, red, yellow, orange, purple):
             #Create break to stop them from accidently moving one more time and breaking things.
             break
         #Create movement for turtle
+        yellow.right(random.randint(-50,50))
         yellow.forward(random.randint(1,51))
         #If statement to check if they reached the finish line
         if yellow.xcor() > 499:
@@ -157,6 +160,7 @@ def turtles(black, green, red, yellow, orange, purple):
             #Create break to stop them from accidently moving one more time and breaking things.
             break
         #Create movement for turtle
+        orange.right(random.randint(-50,50))
         orange.forward(random.randint(1,51))
         #If statement to check if they reached the finish line
         if orange.xcor() > 499:
@@ -168,6 +172,7 @@ def turtles(black, green, red, yellow, orange, purple):
             #Create break to stop them from accidently moving one more time and breaking things.
             break
         #Create movement for turtle
+        purple.right(random.randint(-50,50))
         purple.forward(random.randint(1,51))
         #If statement to check if they reached the finish line
         if purple.xcor() > 499:
