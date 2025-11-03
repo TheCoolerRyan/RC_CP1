@@ -45,12 +45,40 @@ def grid_setup(row_grid, col_grid):
 
 
     while selection == True:
-        for x in row_grid:
-            num = random.randint(1,2)
-            if num == 1:
-                row.append("I")
-            else:
-                row.append(" ")
+        for x in col_grid:
+            #For x
+            y = -350
+            for x in row_grid:
+                m = 0
+                num = random.randint(1,2)
+                if num == 1:
+                    pen.penup()
+                    pen.goto(row_grid[m],y)
+                    pen.pendown()
+                    pen.forward(100)
+                else:
+                    pen.penup()
+                    pen.goto(row_grid[m],y)
+                    pen.forward(100)
+                m +=1
+            y += 100
+        for y in row_grid:
+            #For x
+            x = -350
+            for y in col_grid:
+                m = 0
+                num = random.randint(1,2)
+                if num == 1:
+                    pen.penup()
+                    pen.goto(col_grid[m],y)
+                    pen.pendown()
+                    pen.forward(100)
+                else:
+                    pen.penup()
+                    pen.goto(col_grid[m],y)
+                    pen.forward(100)
+                m +=1
+            x += 100
 
         selection = False
 
