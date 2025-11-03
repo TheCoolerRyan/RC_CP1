@@ -4,6 +4,7 @@
 import turtle
 import random
 
+confused = True
 #set up maze screen
 
 #Goes from -350 to -50 to 50 to 350
@@ -76,7 +77,9 @@ def grid_setup(row_grid, col_grid):
                 else:
                     pen.penup()
                     pen.goto(col_grid[m],y)
+                    pen.left(90)
                     pen.forward(100)
+                    pen.right(90)
                 m +=1
             x += 100
 
@@ -115,7 +118,13 @@ def solvable(row_grid, col_grid):
 
     return False
 
-
-walls()
+while confused == True:
+    tf = solvable("","")
+    if tf == True:
+        walls()
+        grid_setup()
+        confused == False
+    else:
+        pass
 
 turtle.done()
