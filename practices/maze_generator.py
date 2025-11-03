@@ -5,54 +5,89 @@ import turtle
 import random
 
 #set up maze screen
-maze = turtle.Screen()
-maze.setup(100,100)
-maze.tracer(0)
 
-pen = turtle.Turtle()
-pen.speed(50)
-pen.hideturtle()
-pen.penup()
-pen.goto(0,40)
-pen.pendown()
-pen.goto(-40,40)
-pen.goto(-40,-40)
-pen.goto(0,-40)
-pen.penup()
-pen.goto(10,-40)
-pen.pendown()
-pen.goto(40,-40)
-pen.goto(40,40)
-pen.goto(10,40)
-#Will be in a list that decides wether or not 
-def posibilite(x,y,spotx,spoty):
-    spotx = [-40,-30,-20,-10,0,10,20,30,40]
-    spoty = [-40,-30,-20,-10,0,10,20,30,40]
-    for y in spoty:
-        rany = random.randint(1,2)
-        if rany == 1:
-            xy = -40
-            pen.penup()
-            pen.sety(spoty[y])
-            pen.setx(xy)
-            pen.pendown()
-            pen.forward(10)
-            xy += 10
-        else:
-            xy += 10
-            pass
-        for x in spotx: #Create program for x
-            ranx = random.randint(1,2)
-            if ranx == 1:
-                pen.penup()
-                pen.setx(spotx[x])
-                pen.sety(spoty[y])
-                pen.pendown()
-                pen.left(90)
-                pen.forward(10)
+#Goes from -350 to -50 to 50 to 350
+#Cell size should be 100
+wn = turtle.Screen()
+wn.bgcolor("cyan")
+wn.setup(800,800)
+def walls():
+    wall_drawer = turtle.Turtle()
+    wall_drawer.color("black")
+    wall_drawer.hideturtle()
+    wall_drawer.penup()
+    wall_drawer.goto(350,350)
+    wall_drawer.pendown()
+    wall_drawer.goto(350,-350)
+    wall_drawer.goto(50,-350)
+    wall_drawer.penup()
+    wall_drawer.goto(-50,-350)
+    wall_drawer.pendown()
+    wall_drawer.goto(-350,-350)
+    wall_drawer.goto(-350,350)
+    wall_drawer.goto(-50,350)
+    wall_drawer.penup()
+    wall_drawer.goto(50,350)
+    wall_drawer.pendown()
+    wall_drawer.goto(350,350)
+
+row_grid = [-350,-250,-150,-50,50,150,250]
+col_grid = [-350,-250,-150,-50,50,150,250]
+
+def grid_setup(row_grid, col_grid):
+    pen = turtle.Turtle()
+    pen.hideturtle()
+    pen.pendown()
+    selection = True
+    row = []
+    col = []
+
+
+
+    while selection == True:
+        for x in row_grid:
+            num = random.randint(1,2)
+            if num == 1:
+                row.append("I")
             else:
-                pass
+                row.append(" ")
 
-print(posibilite("","","",""))
-        #Figure out how to make it so theres always a way to win
+        selection = False
 
+
+
+
+def solvable(row_grid, col_grid):
+
+    size = len(row_grid) - 1
+    visited = set()
+    stack = [(0,0)]
+
+    while stack:
+        x, y = stack.pop()
+        if x == size -1 and y == size -1:
+            return True
+        
+        if (x,y) in visited:
+            continue
+
+        visited.add((x,y))
+
+        if x < size -1 and col_grid[y][x+1] == 0:
+            stack.append((x+1,y))
+
+        if y < size -1 and row_grid[y+1][x] == 0:
+            stack.append((x,y+1))
+
+        if x > 0 and col_grid[y][x] == 0:
+            stack.append((x-1, y))
+
+        if y > 0 and row_grid[y][x] == 0:
+            stack.append((x,y-1))
+
+    return False
+
+
+walls()
+
+turtle.done()
