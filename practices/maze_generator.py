@@ -1,9 +1,8 @@
 #RC, 1st, Ryan Crop
+
+#Impot libraries
 import turtle
 import random
-#Figure out maze widths and height
-cell_width = 10
-cell_height = 10
 
 #set up maze screen
 maze = turtle.Screen()
