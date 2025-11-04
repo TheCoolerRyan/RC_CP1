@@ -36,60 +36,67 @@ row_grid = [-350,-250,-150,-50,50,150,250]
 col_grid = [-350,-250,-150,-50,50,150,250]
 
 def grid_setup(row_grid, col_grid):
+    true = 0
     pen = turtle.Turtle()
-    pen.hideturtle()
+
     pen.pendown()
+    pen.speed(10)
     selection = True
     row = []
     col = []
+    y = -250
 
 
-
-    while selection == True:
-        for x in col_grid:
-            #For x
-            y = -350
-            for x in row_grid:
-                m = 0
-                num = random.randint(1,2)
-                if num == 1:
-                    pen.penup()
-                    pen.goto(row_grid[m],y)
-                    pen.pendown()
-                    pen.forward(100)
-                else:
-                    pen.penup()
-                    pen.goto(row_grid[m],y)
-                    pen.forward(100)
-                m +=1
+    for x in range (1,7):
+        m = -350
+        true = 0
+        selection = True
+        while selection == True:
+            num = random.randint(1,2)
+            if num == 1:
+                pen.penup()
+                pen.goto(m,y)
+                pen.pendown()
+                pen.forward(100)
+            else:
+                pen.penup()
+                pen.goto(m,y)
+                pen.forward(100)
+            m += 100
+            true += 1
+            if true == 7:
+                selection = False
+        y += 100
+    m = -250
+    for x in range (1,7):
+        y = -350
+        true = 0
+        selection = True
+        while selection == True:
+            num = random.randint(1,2)
+            if num == 1:
+                pen.penup()
+                pen.goto(m,y)
+                pen.pendown()
+                pen.left(90)
+                pen.forward(100)
+            else:
+                pen.penup()
+                pen.goto(m,y)
+                pen.left(90)
+                pen.forward(100)
             y += 100
-        for y in row_grid:
-            #For x
-            x = -350
-            for y in col_grid:
-                m = 0
-                num = random.randint(1,2)
-                if num == 1:
-                    pen.penup()
-                    pen.goto(col_grid[m],y)
-                    pen.pendown()
-                    pen.forward(100)
-                else:
-                    pen.penup()
-                    pen.goto(col_grid[m],y)
-                    pen.left(90)
-                    pen.forward(100)
-                    pen.right(90)
-                m +=1
-            x += 100
-
-        selection = False
-
+            true += 1
+            pen.right(90)
+            if true == 7:
+                selection = False
+        m += 100
 
 
 
 def solvable(row_grid, col_grid):
-
+    row_grid = [-350,-250,-150,-50,50,150,250]
+    col_grid = [-350,-250,-150,-50,50,150,250]
     size = len(row_grid) - 1
     visited = set()
     stack = [(0,0)]
@@ -118,11 +125,15 @@ def solvable(row_grid, col_grid):
 
     return False
 
+
+
 while confused == True:
-    tf = solvable("","")
+    walls()
+    grid_setup("","")
+    tf = solvable("","") #Figure out whats freaking out about the solvable function
     if tf == True:
         walls()
-        grid_setup()
+        grid_setup("","")
         confused == False
     else:
         pass
