@@ -2,31 +2,37 @@
 menu = {"BURGER": 20.00,
         "DOUBLE_BURGER": 40.00,
         "TRIPLE_BURGER": 60.00,
-        
+        "QUADRUPLE_BURGER": 80.00,
+
         "COKE": 5.00,
         "DIET_COKE": 10.00,
         "ZERO_SUGAR_COKE": 20.00,
-        
+        "PEPSI": 1.00,
+
         "FRIES": 7.00,
         "POTATO": 5.00,
         "CARROTS": 1.00,
         "ONION_RINGS": 3.00,
-        
+        "BANNANA": 13.00,
+
         "NONE": 0}
 
 #Set up dictionarys for seperate courses so they can't pick the wrong ones.
 main = {"BURGER": 20.00,
         "DOUBLE_BURGER": 40.00,
-        "TRIPLE_BURGER": 60.00}
+        "TRIPLE_BURGER": 60.00,
+        "QUADRUPLE_BURGER": 80.00}
 
 drink = {"COKE": 5.00,
         "DIET_COKE": 10.00,
-        "ZERO_SUGAR_COKE": 20.00}
+        "ZERO_SUGAR_COKE": 20.00,
+        "PEPSI": 1.00}
 
 side = {"FRIES": 7.00,
         "POTATO": 5.00,
         "CARROTS": 1.00,
-        "ONION_RINGS": 3.00}
+        "ONION_RINGS": 3.00,
+        "BANNANA": 13.00,}
 
 order = {"Main Course:": 0,
          "Drink:": 0,
