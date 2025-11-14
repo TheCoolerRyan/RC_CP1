@@ -73,7 +73,7 @@ while win == False:
         print(f"Its a tie! The bot chose {choice}\n{paper} \nand you chose {choice2}\n{paper}!")
     
     if choice == "Paper" and  choice2 == "Scissors":
-        print(f"You got a point! The bot got a point! The bot chose {choice}\n{paper} \nand you chose {choice2}\n{scissors}!")
+        print(f"You got a point! The bot chose {choice}\n{paper} \nand you chose {choice2}\n{scissors}!")
         human_win += 1
     
     if choice == "Scissors" and  choice2 == "Rock":
