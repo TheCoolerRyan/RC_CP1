@@ -6,8 +6,9 @@ print("This is a Flexible Calculator that can calculate the sum, average, max, m
 def nums():
     x = True
     nums = []
+    length = []
     while x == True:
-        num = input("Pick a number. If you want to stop picking numbers, put no").strip().upper()
+        num = input("Pick a number. If you want to stop picking numbers, put no. (Do not add any decimals please.)").strip().upper()
         if num.isdigit() != True and num != "NO":
             print("That is not a choice...")
             pass
@@ -18,9 +19,12 @@ def nums():
             print("Here are your numbers so far:")
             for y in nums:
                 print(f"{y:.2f}")
-    return nums
+    return nums, length
 
-def oper(*numbers):
+def oper(*numbers,length):
+    for i in nums: #Fix this
+        length = []
+        length.append(float(num))
     chosing = True
     while chosing == True:
         opperation = input("What operation would you like to do? (Sum, Average, Max, Min, Or Product)").strip().capitalize()
@@ -29,7 +33,9 @@ def oper(*numbers):
             print(f"The sum of your numbers is: {add:.2f}")
             chosing = False
         elif opperation == "Average":
-            add = sum(list(*numbers))/len(list(*numbers))
+            val = float(sum(list(*numbers)))
+            length = len(length)
+            add = val/length
             print(f"Your average is: {add:.2f}")
             chosing = False
         elif opperation == "Max":
