@@ -1,67 +1,67 @@
-#RC, 1st, Flexible Calculator
+print("This is a Flexible Calculator that can calculate the sum, average, max, min, and product of what you put in.")
 
-print("This is a Flexible Calculator that can calculate the sum, average, max, min,  and product of what you put in.")
-
-
-def nums():
-    x = True
-    nums = []
-    length = []
-    while x == True:
-        num = input("Pick a number. If you want to stop picking numbers, put no. (Do not add any decimals please.)").strip().upper()
-        if num.isdigit() != True and num != "NO":
-            print("That is not a choice...")
-            pass
-        elif num == "NO":
-            x = False
-        else:
-            nums.append(float(num))
+def get_numbers():
+    numbers = []
+    while True:
+        num = input("Pick a number. If you want to stop picking numbers, put no. ").strip()
+        if num.lower() == "no":
+            break
+        try:
+            number = float(num)
+            numbers.append(number)
             print("Here are your numbers so far:")
-            for y in nums:
+            for y in numbers:
                 print(f"{y:.2f}")
-    return nums, length
+        except ValueError:
+            print("That is not a valid number. Please enter a valid decimal number or 'no' to stop.")
+    return numbers
 
-def oper(*numbers,length):
-    for i in nums: #Fix this
-        length = []
-        length.append(float(num))
+def perform_operation(numbers):
     chosing = True
-    while chosing == True:
-        opperation = input("What operation would you like to do? (Sum, Average, Max, Min, Or Product)").strip().capitalize()
-        if opperation == "Sum":
-            add = sum(list(*numbers))
-            print(f"The sum of your numbers is: {add:.2f}")
+    while chosing:
+        operation = input("What operation would you like to do? (Sum, Average, Max, Min, Or Product) ").strip().capitalize()
+        if operation == "Sum":
+            total = sum(numbers)
+            print(f"The sum of your numbers is: {total:.2f}")
             chosing = False
-        elif opperation == "Average":
-            val = float(sum(list(*numbers)))
-            length = len(length)
-            add = val/length
-            print(f"Your average is: {add:.2f}")
+        elif operation == "Average":
+            if len(numbers) == 0:
+                print("No numbers to calculate average.")
+            else:
+                avg = sum(numbers) / len(numbers)
+                print(f"Your average is: {avg:.2f}")
             chosing = False
-        elif opperation == "Max":
-            biggest = max(list(*numbers))
-            print(f"The max is: {biggest:.2f}")
+        elif operation == "Max":
+            if len(numbers) == 0:
+                print("No numbers to find max.")
+            else:
+                max_num = max(numbers)
+                print(f"The max is: {max_num:.2f}")
             chosing = False
-        elif opperation == "Min":
-            smallest = min(list(*numbers))
-            print(f"The min is: {smallest:.2f}")
+        elif operation == "Min":
+            if len(numbers) == 0:
+                print("No numbers to find min.")
+            else:
+                min_num = min(numbers)
+                print(f"The min is: {min_num:.2f}")
             chosing = False
-        elif opperation == "Product":
+        elif operation == "Product":
             product = 1
-            for num in list(*numbers):
+            for num in numbers:
                 product *= num
             print(f"The product is: {product:.2f}")
             chosing = False
         else:
-            print("That is not an option...")
-            pass
-
+            print("That is not an option... Please choose again.")
 
 while True:
-    oper((i for i in nums()))
-    stop = input("Do you want to do another operation? If you do, put 1, otherwise put 2 to quit.")
+    numbers = get_numbers()
+    if len(numbers) == 0:
+        print("No numbers entered. Exiting.")
+        break
+    perform_operation(numbers)
+    stop = input("Do you want to do another operation? If you do, put 1, otherwise put 2 to quit. ").strip()
     if stop == "1":
         pass
     else:
-        print("Okay, goodbye...")
-    
+        print("Okay, goddbye...")
