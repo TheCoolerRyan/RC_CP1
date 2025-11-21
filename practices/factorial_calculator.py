@@ -4,10 +4,10 @@
 
 #Define fuactoring(number)
 def factoring(number):
+    #Factorial = empty list
+    factorial = []
     #For i in range(number):
-    for i in range(number):
-        #Factorial = empty list
-        factorial = []
+    for i in range(1,number):
         #If i greater than 0:
         if i > 0:
             #Factorial.append(i)
@@ -16,23 +16,26 @@ def factoring(number):
         else:
             #Break
             break
-    #return factorial
-    return factorial
+    num = 1
+    for i in factorial:
+        num *= i
+    #return factorial and num
+    return factorial, num
 
 #Define output(factorial):
-def ouput(factorial):
+def output(factorial,num):
     #out = ""
     out = ""
     #for i in factorial:
     for i in factorial:
         #if i > 1:
-        if i > 1:
+        if i != number:
             #add "F{I} x" to output
-            out.append(f"{i} x")
+            out += (f"{i} x")
         #Else:
         else:
             #add i =
-            out.append(f"{i} =")
+            out += (f"{i} = {num}")
     #Return out
     return out
 
@@ -48,9 +51,19 @@ def check_number(number):
         return False
 
 
-while True:
-    number = input("Pick the number uyou") #Fix here
+while True: ######### This spot wasn't here originally, It needed to be added to actually use the functions
+    while True:
+        number = input("Please put the number that you want to find the factorial of here:").strip() #Fix here
+        t_f = check_number(number)
+        if t_f == True:
+            number = int(number)
+            break
+        else:
+            print("That is not a number, please put a number in.")
+            #########
     #Factor = (Factoring(number))
-    factor = (factoring(number))
+    factor, num = (factoring(number))
     #print output(factorial)
-    print(output(factorial))
+    out = output(factor, num)
+    print(out)
+
