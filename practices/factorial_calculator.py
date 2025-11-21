@@ -1,46 +1,56 @@
-#RC,1st,Factorial Calculator
+#RC, 1st, Ryan Crop
 
-#Creat the loop for a user inputs
-while True:
-    #Set input variable to true
-    pick = True
-    #ask user for input
-    while pick == True:
-        number = input("What number do you want the factorial of (Zero or above, please.): ").strip()
-        #Create if statement for 0
-        if number == "0":
-            number = 0
-            pick = False
+#Creat functions
 
-        elif number.isdigit() == True:
-            number = int(number)
-            pick = False
+#Define fuactoring(number)
+def factoring(number):
+    #For i in range(number):
+    for i in range(number):
+        #Factorial = empty list
+        factorial = []
+        #If i greater than 0:
+        if i > 0:
+            #Factorial.append(i)
+            factorial.append(i)
+        #Else:
         else:
-            print("That is not an acceptable number/answer...")
-            pass
-    #calculate the factorial
-    one = 1
-    nums = []
-    if number == 0:
-        print("0 = 1")
-        number = 0
-    while number != 0:
-        nums.append(number)
-        number -= 1
-    if nums != []:
-        one = list(map(lambda n: 1 * n, nums))
-        o = 1
-        for x in nums:
-            o *= x
-        while True:
-            if number == 0:
-                #print of number sequence and then the sum
-                for x in nums:
-                    if x != 1:
-                        print(f"{x} x", end=" ")
-                    else:
-                        print(f"{1} = {o}")
-                        number = 1
-                        break
-            #Make choice to see if they want to leave
+            #Break
+            break
+    #return factorial
+    return factorial
 
+#Define output(factorial):
+def ouput(factorial):
+    #out = ""
+    out = ""
+    #for i in factorial:
+    for i in factorial:
+        #if i > 1:
+        if i > 1:
+            #add "F{I} x" to output
+            out.append(f"{i} x")
+        #Else:
+        else:
+            #add i =
+            out.append(f"{i} =")
+    #Return out
+    return out
+
+#Define check_number(number)
+def check_number(number):
+    #if number.isdigit() == True
+    if number.isdigit() == True:
+        #return True
+        return True
+    #else 
+    else:
+        #return False
+        return False
+
+
+while True:
+    number = input("Pick the number uyou") #Fix here
+    #Factor = (Factoring(number))
+    factor = (factoring(number))
+    #print output(factorial)
+    print(output(factorial))
