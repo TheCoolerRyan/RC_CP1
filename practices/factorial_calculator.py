@@ -1,4 +1,4 @@
-#RC, 1st, Ryan Crop
+#RC, 1st, Factorial calculator based of off Annas pseducode.
 
 #Creat functions
 
