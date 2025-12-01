@@ -46,7 +46,8 @@
         #Gold -= 2
         #Return stat
     #else:
-        #How did you manage this.
+        #You don't have enough money...
+        #break
 
 
 
@@ -62,18 +63,51 @@
 #def fight(stat, room)
     #if room == 1:
         #Print out options to buy and also the base stats
-        #Make sure not to allow them to buy the stats
+        #Make sure not to allow them to buy the stats multiple times.
     #elif room == 2:
         #if 2 isin't in beaten list:
             #enemy = nerd
             #write out all of the enemy stats here.
+            
+            #t_wins = 0
+            #t_wins = 0
+            #While True:
+                #Roll for who gets to decide the attack.
+                #choice = random.randint(1,2)
+
+                #if choice = 1:
+                    #attack = wisdom
+                #else:
+                    #While True:
+                        #attack = user input("What would you like to attack with").strip().upper()
+                        #If attack = Wisdom or attack = Strength or attack = Charisma:
+                            #Break
+                        #Else:
+                            #Print(That is not a choice...) 
+
+                #Set up bots stats
+
+                #if attack == "Wisdom":
+                    #chain = wisdom
+                #elif attack == "Strength":
+                    #chain = strength
+                #else:
+                    #chain = charisma
+
+                #Set up the rolls
+                #human_roll = random.randint(1, stat[attack])
+                #bot roll = random.randint(1, chain)
+
+                #Check to see which is greater and then add the win or loss.
+                #if human_roll >= bot_roll:
+                    #print(you won this inconter!!!)
+                    #t_win += 1
+                #else:
+                    #Print(You lost this battle...)
+                    #t_loss += 1
 
 
-            #Roll for who gets to decide the attack.
-            #if robotroll > human roll:
-                #attack = wisdom
-            #else:
-                #attack = user input()
+
 
 
         #else:
