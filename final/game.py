@@ -62,7 +62,10 @@
 # 3rd function
 #def fight_room(stat, room)
     #if room == 1:
-        #Print out options to buy and also the base stats
+        #ask them if they want to by an upgrade/item
+
+        #def stat_increase
+
         #Make sure not to allow them to buy the stats multiple times.
     #elif room == 2:
         #if 2 isn't in beaten list:
@@ -489,12 +492,22 @@
 
 #Make a loop to go through the flow
 #while game_finished == Fales and failed == False
-    #while stat[Lose] < 3:
-        #print statement to ask them what room they want to go into
+
+  #Add the finish function right here.
+
+    #print statement to ask them what room they want to go into
 
 
-        #Print a list of room numbers and there base purposes
+    #Print a list of room numbers and there base purposes
 
 
+    #While true loop for room picking
         #room = input(What room, (1-9), would you like to go through?)
         #Check if room is valid
+
+        #if room.isdigit() == True:
+            #room = int(room)
+            #break
+        #else:
+            #print that there input is incorrect.
+    
