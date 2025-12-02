@@ -54,10 +54,9 @@
 # 2nd function
 #def lose(stat):
     #if stat[lose] == 3:
-        #set end/quit to true
+        #return True
     #else:
-        #set end/quit to false
-        #pass
+        #return False
 
 # 3rd function
 #def fight_room(stat, room)
@@ -117,12 +116,10 @@
                     #print that you have one this inconter
                     #add += 1 to stats[wins]
                     #add += 1 to stats[gold]
-                    #add this room to the betean room list
                     #break
                 #elif t_loss >= 3:
                     #print that they have lost the battle
                     #add += 1 to stats[lose]
-                    #add this room to 'Beaten' room list
                     #break
         #else:
             #Print of thing telling the person this room has already been concured
@@ -177,12 +174,10 @@
                     #print that you have one this inconter
                     #add += 1 to stats[wins]
                     #add += 1 to stats[gold]
-                    #add this room to the betean room list
                     #break
                 #elif t_loss >= 3:
                     #print that they have lost the battle
                     #add += 1 to stats[lose]
-                    #add this room to 'Beaten' room list
                     #break
         #else:
             #Print of thing telling the person this room has already been concured
@@ -237,12 +232,10 @@
                     #print that you have one this inconter
                     #add += 1 to stats[wins]
                     #add += 1 to stats[gold]
-                    #add this room to the betean room list
                     #break
                 #elif t_loss >= 3:
                     #print that they have lost the battle
                     #add += 1 to stats[lose]
-                    #add this room to 'Beaten' room list
                     #break
         #else:
             #Print of thing telling the person this room has already been concured
@@ -297,12 +290,10 @@
                     #print that you have one this inconter
                     #add += 1 to stats[wins]
                     #add += 1 to stats[gold]
-                    #add this room to the betean room list
                     #break
                 #elif t_loss >= 3:
                     #print that they have lost the battle
                     #add += 1 to stats[lose]
-                    #add this room to 'Beaten' room list
                     #break
         #else:
             #Print of thing telling the person this room has already been concured
@@ -356,12 +347,10 @@
                     #print that you have one this inconter
                     #add += 1 to stats[wins]
                     #add += 1 to stats[gold]
-                    #add this room to the betean room list
                     #break
                 #elif t_loss >= 3:
                     #print that they have lost the battle
                     #add += 1 to stats[lose]
-                    #add this room to 'Beaten' room list
                     #break
         #else:
             #Print of thing telling the person this room has already been concured
@@ -416,12 +405,10 @@
                     #print that you have one this inconter
                     #add += 1 to stats[wins]
                     #add += 1 to stats[gold]
-                    #add this room to the betean room list
                     #break
                 #elif t_loss >= 3:
                     #print that they have lost the battle
                     #add += 1 to stats[lose]
-                    #add this room to 'Beaten' room list
                     #break
         #else:
             #Print of thing telling the person this room has already been concured
@@ -482,6 +469,7 @@
                     #break
         #else:
             #Print You do not meet the requirments
+    #return stat, finished_game, failed
 
 
 #Set the loop requirments to false
@@ -490,24 +478,26 @@
 
 #Explain the game through a print statment
 
-#Make a loop to go through the flow
+#Make a loop to go through the game
 #while game_finished == Fales and failed == False
-
-  #Add the finish function right here.
-
-    #print statement to ask them what room they want to go into
-
+    #check = lose(stat)
+    #if check == False:
+        #print that they were kicked out of school for losing 3 times. We don't except losers. You will only ever be a lonely and uniportant side character!!! >:)
+        #break
+    #else:
+        #pass
 
     #Print a list of room numbers and there base purposes
-
+    #print statement to ask them what room they want to go into
 
     #While true loop for room picking
         #room = input(What room, (1-9), would you like to go through?)
         #Check if room is valid
 
-        #if room.isdigit() == True:
+        #if room.isdigit() == True and int(room) is not in beaten:
             #room = int(room)
+            #Beaten.append(room)
             #break
         #else:
-            #print that there input is incorrect.
-    
+            #print that there input is incorrect or it has already been picked.
+    #stat, finished_game, failed = fight_room(stat, room)
