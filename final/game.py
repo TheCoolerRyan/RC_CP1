@@ -1,60 +1,137 @@
 #RC, 1st, Final game
 
+import random
+
 #set the list for beaten people
-
+beaten = []
 #set stat dictionary that will hold win lose and gold as well
-
+stat = { "Charm": 8,
+      "Wisdom": 8,
+      "Strength": 8,
+      "Win": 0,
+      "Lose": 0,
+      "Gold": 0}
 #Set functions
 
 # 1st function
 #def stat_increase(stat, gain):
+def stat_increase(stat, gain):
     #Create the stat gains for crocs, nerdy_glasses, and Suit. the first item.
-        #Make sure that they must have gold and that we return new stats.
-    
-    #Create basic if statments to check if they wanted to pick a base stat upgrade for charm, wisdom, or strength.
+    #Make sure that they must have gold and that we return new stats.
+    if gain == "Crocs" and stat["Gold"] > 1:
+        stat["Charm"] -= 2
+        stat["wisdom"] -= 2
+        stat["strength"] += 4
+        stat["Gold"] -=2
+        return stat
+    elif gain == "Nerdy Glasses" and stat["Gold"] > 1:
+        stat["Charm"] -= 2
+        stat["Wisdom"] += 4
+        stat["Strength"] -= 2
+        stat["Gold"] -=2
+        return stat
+    elif gain == "Suit" and stat["Gold"] > 1:
+        stat["Charm"] += 4
+        stat["Wisdom"] -= 2
+        stat["Strength"] -= 2
+        stat["Gold"] -=2
+        return stat
+    elif gain == "Charm" and stat["Gold"] > 1:
+        stat["Charm"] += 2
+        stat["Gold"] -= 2
+        return stat
+    elif gain == "Wisdom" and stat["Gold"] > 1:
+        stat["Wisdom"] += 2
+        stat["Gold"] -= 2
+        return stat
+    elif gain == "Strength" and stat["Gold"] > 1:
+        stat["Strength"] += 2
+        stat["Gold"] -= 2
+        return stat
+    else:
+        print("You don't have enough money...")
+        return stat
 
 # 2nd function
 #def lose(stat):
+def lose(stat):
     #If your lose stats are greater than 3, return true to end the game
+    if stat[lose] == 3:
+        return True
     #else:
+    else:
         #return false and keep the game going.
+        return False
 
 # 3rd function
 #def fight_room(stat, room)
+def fight_room(stat,room,beaten):
     #if room == 1:
+    if room == 1:
+        pass
         #ask them if they want to by an upgrade/item
 
         #def stat_increase
 
         #Make sure not to allow them to buy the stats multiple times.
     #elif room == 2:
+    elif room == 2:
         #if 2 isn't in beaten list:
+        if 2 not in beaten:
             #write out all of the enemy stats here.
-            
+            b_strength = 5; b_wisdom = 10; b_charm = 2
             #Set base wins and losses to 0 as variables
-
+            t_win = 0
+            t_loss = 0
             #While True:
+            while True:
                 #Roll for who gets to decide the attack.
-
+                choice = random.randint(1,2)
                 #if choice = 1:
+                if choice == 1:
                     #set attack to the bots strongest
+                    attack = "Wisdom"
+                    chain = b_wisdom
                 #else:
+                else:
                     #While True:
+                    while True:
                         #Ask the user what stat they would like to use.
-
+                        attack = input("What stat would you like to attack with, Wisdom, Strength, or Charm?").strip().upper()
                         #check if its one of the three actual stats.
+                        if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
+                            break
                         #Else:
+                        else:
                             #tell them its not a choice
+                            print("That is not a choice...")
 
                 #Set up bots stats for when the user picks the choice
+                if attack == "Wisdom":
+                    chain = b_wisdom
+                elif attack == "Strength":
+                    chain = b_strength
+                else:
+                    chain = b_charm
 
                 #Set up the rolls based on the random library and the max is there stat.
-
+                human_roll = random.randint(1, stat[attack])
+                bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-
+                if human_roll >bot_roll:
+                    print("You have gained a point!")
+                    t_win += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                elif bot_roll > human_roll:
+                    print("You have sadly gained one loss...")
+                    t_loss += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                else:
+                    print("It's a tie!!!")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
-
+                if t_win >= 3:
+                    print("You have vanquished your foe, and now you have more aura!!!")
                 #if you win, add gold and one win to your stats as well as adding the room to the beaten list
 
                 #else and one loss to your stats and add the room to the 'beaten' list
