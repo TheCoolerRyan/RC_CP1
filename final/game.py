@@ -136,11 +136,13 @@ def fight_room(stat,room,beaten):
                     stat["Win"] += 1
                     stat["Gold"] +=1
                     room.append(beaten)
+                    break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
                     stat["Lose"] += 1
                     room.append(beaten)
+                    break
         #else:
             #Print of thing telling the person this room has already been concured or that the number is to high
 
