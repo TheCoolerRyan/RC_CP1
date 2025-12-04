@@ -76,7 +76,7 @@ def fight_room(stat,room,beaten):
         #Make sure not to allow them to buy the stats multiple times.
     #elif room == 2:
     elif room == 2:
-        #if 2 isn't in beaten list:
+        #if room isn't in beaten list:
         if 2 not in beaten:
             #write out all of the enemy stats here.
             b_strength = 5; b_wisdom = 10; b_charm = 2
@@ -97,7 +97,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("What stat would you like to attack with, Wisdom, Strength, or Charm?").strip().upper()
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -144,65 +144,456 @@ def fight_room(stat,room,beaten):
                     room.append(beaten)
                     break
         #else:
+        else:
             #Print of thing telling the person this room has already been concured or that the number is to high
+            print("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
 
-        #Repeat this proceses for rooms 3-7, though have the stats be different as well as the dialoge
-
-    #if the room is 8:
-        #Check to see if the user has won the mandatory amount of wins.
-            #enemy = student_prez
+    elif room == 3:
+        #if room isn't in beaten list:
+        if 3 not in beaten:
             #write out all of the enemy stats here.
-            
-            #Set temporary wins and losses to 0
-
+            b_strength = 11; b_wisdom = 4; b_charm = 7
+            #Set base wins and losses to 0 as variables
+            t_win = 0
+            t_loss = 0
             #While True:
+            while True:
                 #Roll for who gets to decide the attack.
-
+                choice = random.randint(1,2)
                 #if choice = 1:
+                if choice == 1:
                     #set attack to the bots strongest
+                    attack = "Strength"
+                    chain = b_strength
                 #else:
+                else:
                     #While True:
+                    while True:
                         #Ask the user what stat they would like to use.
-
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
                         #check if its one of the three actual stats.
+                        if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
+                            break
                         #Else:
+                        else:
                             #tell them its not a choice
+                            print("That is not a choice...")
 
                 #Set up bots stats for when the user picks the choice
+                if attack == "Wisdom":
+                    chain = b_wisdom
+                elif attack == "Strength":
+                    chain = b_strength
+                else:
+                    chain = b_charm
 
                 #Set up the rolls based on the random library and the max is there stat.
-
+                human_roll = random.randint(1, stat[attack])
+                bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-
+                if human_roll >bot_roll:
+                    print("You have gained a point!")
+                    t_win += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                elif bot_roll > human_roll:
+                    print("You have sadly gained one loss...")
+                    t_loss += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                else:
+                    print("It's a tie!!!")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
-
-                #if you win, add gold and one win to your stats as well as adding the room to the beaten list
-
-                #Check to see if the round was one or lost by using t_wins and t_loss
-                #if t_wins >= 3:
-                    #print that have one the game and are now the main character.
-                    #set finished game to true
-                    #break
-                #elif t_loss >= 3:
-                    #print that they will never be the main character
-                    #Set failed to true
-                    #break
+                if t_win >= 3:
+                    print("You have vanquished your foe, and now you have more aura!!!")
+                #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
+                    stat["Win"] += 1
+                    stat["Gold"] +=1
+                    room.append(beaten)
+                    break
+                #else and one loss to your stats and add the room to the 'beaten' list
+                elif t_loss >= 3:
+                    print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
+                    stat["Lose"] += 1
+                    room.append(beaten)
+                    break
         #else:
-            #Print You do not meet the requirments
-    #return stat, finished_game, failed, to see if they have won or lost this epic fight.
+        else:
+            #Print of thing telling the person this room has already been concured or that the number is to high
+            print("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
 
+    elif room == 4:
+        #if room isn't in beaten list:
+        if 4 not in beaten:
+            #write out all of the enemy stats here.
+            b_strength = 6; b_wisdom = 10; b_charm = 9
+            #Set base wins and losses to 0 as variables
+            t_win = 0
+            t_loss = 0
+            #While True:
+            while True:
+                #Roll for who gets to decide the attack.
+                choice = random.randint(1,2)
+                #if choice = 1:
+                if choice == 1:
+                    #set attack to the bots strongest
+                    attack = "Wisdom"
+                    chain = b_wisdom
+                #else:
+                else:
+                    #While True:
+                    while True:
+                        #Ask the user what stat they would like to use.
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        #check if its one of the three actual stats.
+                        if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
+                            #Break to get out of loop
+                            break
+                        #Else:
+                        else:
+                            #tell them its not a choice
+                            print("That is not a choice...")
 
-#Set the loop requirments to false
+                #Set up bots stats for when the user picks the choice
+                if attack == "Wisdom":
+                    chain = b_wisdom
+                elif attack == "Strength":
+                    chain = b_strength
+                else:
+                    chain = b_charm
 
+                #Set up the rolls based on the random library and the max is there stat.
+                human_roll = random.randint(1, stat[attack])
+                bot_roll = random.randint(1, chain)
+                #Check to see which is greater and then add the win or loss.
+                if human_roll >bot_roll:
+                    print("You have gained a point!")
+                    t_win += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                elif bot_roll > human_roll:
+                    print("You have sadly gained one loss...")
+                    t_loss += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                else:
+                    print("It's a tie!!!")
+                #Check to see if the round was one or lost by using t_wins and t_loss variables
+                if t_win >= 3:
+                    print("You have vanquished your foe, and now you have more aura!!!")
+                #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
+                    stat["Win"] += 1
+                    stat["Gold"] +=1
+                    room.append(beaten)
+                    break
+                #else and one loss to your stats and add the room to the 'beaten' list
+                elif t_loss >= 3:
+                    print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
+                    stat["Lose"] += 1
+                    room.append(beaten)
+                    break
+        #else:
+        else:
+            #Print of thing telling the person this room has already been concured or that the number is to high
+            print("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
+
+    elif room == 5:
+        #if room isn't in beaten list:
+        if 5 not in beaten:
+            #write out all of the enemy stats here.
+            b_strength = 10; b_wisdom = 7; b_charm = 7
+            #Set base wins and losses to 0 as variables
+            t_win = 0
+            t_loss = 0
+            #While True:
+            while True:
+                #Roll for who gets to decide the attack.
+                choice = random.randint(1,2)
+                #if choice = 1:
+                if choice == 1:
+                    #set attack to the bots strongest
+                    attack = "Strength"
+                    chain = b_strength
+                #else:
+                else:
+                    #While True:
+                    while True:
+                        #Ask the user what stat they would like to use.
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        #check if its one of the three actual stats.
+                        if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
+                            #Break to get out of loop
+                            break
+                        #Else:
+                        else:
+                            #tell them its not a choice
+                            print("That is not a choice...")
+
+                #Set up bots stats for when the user picks the choice
+                if attack == "Wisdom":
+                    chain = b_wisdom
+                elif attack == "Strength":
+                    chain = b_strength
+                else:
+                    chain = b_charm
+
+                #Set up the rolls based on the random library and the max is there stat.
+                human_roll = random.randint(1, stat[attack])
+                bot_roll = random.randint(1, chain)
+                #Check to see which is greater and then add the win or loss.
+                if human_roll >bot_roll:
+                    print("You have gained a point!")
+                    t_win += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                elif bot_roll > human_roll:
+                    print("You have sadly gained one loss...")
+                    t_loss += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                else:
+                    print("It's a tie!!!")
+                #Check to see if the round was one or lost by using t_wins and t_loss variables
+                if t_win >= 3:
+                    print("You have vanquished your foe, and now you have more aura!!!")
+                #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
+                    stat["Win"] += 1
+                    stat["Gold"] +=1
+                    room.append(beaten)
+                    break
+                #else and one loss to your stats and add the room to the 'beaten' list
+                elif t_loss >= 3:
+                    print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
+                    stat["Lose"] += 1
+                    room.append(beaten)
+                    break
+        #else:
+        else:
+            #Print of thing telling the person this room has already been concured or that the number is to high
+            print("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
+
+    elif room == 6:
+        #if room isn't in beaten list:
+        if 6 not in beaten:
+            #write out all of the enemy stats here.
+            b_strength = 8; b_wisdom = 8; b_charm = 8
+            #Set base wins and losses to 0 as variables
+            t_win = 0
+            t_loss = 0
+            #While True:
+            while True:
+                while True:
+                    #Talk about how chill the guy is
+                    print("The chill guy is so chill, he lets you pick what to attack with. Your a monster for hurting someone who has done no wrong, he's just a chill guy!!!")
+                    #Ask the user what stat they would like to use.
+                    attack = input("What stat would you like to attack with (You monster!)? Wisdom, Strength, or Charm?").strip().upper()
+                    #check if its one of the three actual stats.
+                    if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
+                        #Break to get out of loop
+                        break
+                    #Else:
+                    else:
+                        #tell them its not a choice
+                        print("That is not a choice...")
+
+                #Set up bots stats for when the user picks the choice
+                if attack == "Wisdom":
+                    chain = b_wisdom
+                elif attack == "Strength":
+                    chain = b_strength
+                else:
+                    chain = b_charm
+
+                #Set up the rolls based on the random library and the max is there stat.
+                human_roll = random.randint(1, stat[attack])
+                bot_roll = random.randint(1, chain)
+                #Check to see which is greater and then add the win or loss.
+                if human_roll >bot_roll:
+                    print("You have gained a point!")
+                    t_win += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                elif bot_roll > human_roll:
+                    print("You have sadly gained one loss...")
+                    t_loss += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                else:
+                    print("It's a tie!!!")
+                #Check to see if the round was one or lost by using t_wins and t_loss variables
+                if t_win >= 3:
+                    print("You have vanquished your foe, and now you have more aura!!!")
+                #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
+                    stat["Win"] += 1
+                    stat["Gold"] +=1
+                    room.append(beaten)
+                    break
+                #else and one loss to your stats and add the room to the 'beaten' list
+                elif t_loss >= 3:
+                    print("He was to chill for you >:)")
+                    stat["Lose"] += 1
+                    room.append(beaten)
+                    break
+        #else:
+        else:
+            #Print of thing telling the person this room has already been concured or that the number is to high
+            print("You already tried hurting the chill guy... you monster... theres no longer a chill guy here.")
+
+    elif room == 7:
+        #if room isn't in beaten list:
+        if 7 not in beaten:
+            #write out all of the enemy stats here.
+            b_strength = 6; b_wisdom = 9; b_charm = 10
+            #Set base wins and losses to 0 as variables
+            t_win = 0
+            t_loss = 0
+            #While True:
+            while True:
+                #Roll for who gets to decide the attack.
+                choice = random.randint(1,2)
+                #if choice = 1:
+                if choice == 1:
+                    #set attack to the bots strongest
+                    attack = "Charm"
+                    chain = b_charm
+                #else:
+                else:
+                    #While True:
+                    while True:
+                        #Ask the user what stat they would like to use.
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        #check if its one of the three actual stats.
+                        if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
+                            #Break to get out of loop
+                            break
+                        #Else:
+                        else:
+                            #tell them its not a choice
+                            print("That is not a choice...")
+
+                #Set up bots stats for when the user picks the choice
+                if attack == "Wisdom":
+                    chain = b_wisdom
+                elif attack == "Strength":
+                    chain = b_strength
+                else:
+                    chain = b_charm
+
+                #Set up the rolls based on the random library and the max is there stat.
+                human_roll = random.randint(1, stat[attack])
+                bot_roll = random.randint(1, chain)
+                #Check to see which is greater and then add the win or loss.
+                if human_roll >bot_roll:
+                    print("You have gained a point!")
+                    t_win += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                elif bot_roll > human_roll:
+                    print("You have sadly gained one loss...")
+                    t_loss += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                else:
+                    print("It's a tie!!!")
+                #Check to see if the round was one or lost by using t_wins and t_loss variables
+                if t_win >= 3:
+                    print("You have vanquished your foe, and now you have more aura!!!")
+                #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
+                    stat["Win"] += 1
+                    stat["Gold"] +=1
+                    room.append(beaten)
+                    break
+                #else and one loss to your stats and add the room to the 'beaten' list
+                elif t_loss >= 3:
+                    print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
+                    stat["Lose"] += 1
+                    room.append(beaten)
+                    break
+        #else:
+        else:
+            #Print of thing telling the person this room has already been concured or that the number is to high
+            print("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
+
+    elif room == 9:
+        #if room isn't in beaten list:
+        if stat["Win"] >= 2:
+            #write out all of the enemy stats here.
+            b_strength = 10; b_wisdom = 14; b_charm = 12
+            #Set base wins and losses to 0 as variables
+            t_win = 0
+            t_loss = 0
+            #While True:
+            while True:
+                #Roll for who gets to decide the attack.
+                choice = random.randint(1,2)
+                #if choice = 1:
+                if choice == 1:
+                    #set attack to the bots strongest
+                    attack = "Wisdom"
+                    chain = b_wisdom
+                #else:
+                else:
+                    #While True:
+                    while True:
+                        #Ask the user what stat they would like to use.
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        #check if its one of the three actual stats.
+                        if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
+                            #Break to get out of loop
+                            break
+                        #Else:
+                        else:
+                            #tell them its not a choice
+                            print("That is not a choice...")
+
+                #Set up bots stats for when the user picks the choice
+                if attack == "Wisdom":
+                    chain = b_wisdom
+                elif attack == "Strength":
+                    chain = b_strength
+                else:
+                    chain = b_charm
+
+                #Set up the rolls based on the random library and the max is there stat.
+                human_roll = random.randint(1, stat[attack])
+                bot_roll = random.randint(1, chain)
+                #Check to see which is greater and then add the win or loss.
+                if human_roll >bot_roll:
+                    print("You have gained a point!")
+                    t_win += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                elif bot_roll > human_roll:
+                    print("You have sadly gained one loss...")
+                    t_loss += 1
+                    print(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                else:
+                    print("It's a tie!!!")
+                #Check to see if the round was one or lost by using t_wins and t_loss variables
+                if t_win >= 3:
+                    print("You have vanquished your foe, and now you are the main character!!! But at what cost...")
+                    finished_game = True
+                    room.append(beaten)
+                    break
+                #else and one loss to your stats and add the room to the 'beaten' list
+                elif t_loss >= 3:
+                    print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down so much from loseing that you are being expelled. It's game over...")
+                    failed = True
+                    room.append(beaten)
+                    break
+        else:
+            #Print of thing telling the person this room has already been concured or that the number is to high
+            print("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
+    return stat, beaten, finished_game, failed
+
+    
+finished_game = False
+failed = False
 #Explain the game through a print statment
+print("Explanation")
 
 #Make a loop to go through the game
+while finished_game == False and failed == False:
 #while game_finished == Fales and failed == False (These are all of the different ways to win or lose.)
+    check = lose(stat)
     #Check to see if they have lost to many times to continue to fight, if they have, exit the loop.
-
+    if check == False:
+        print("You have failed in your conquest by failing to weak enemies to much. You will always be a lonely side character...")
+        break
+    else:
+        pass
     #Print a list of room numbers and there base purposes
-
+    print(f"There are 9 rooms you can go to. \n1. Dorms: This is were you will spend your gold from your hard earned wins to buy stat increases or there are our gucci items. Everything costs 2 gold, you have {stat['Gold']} gold. \n2. Computer lab: contains the nerd enemy \n3. Gym: Contains the Jock enemy. \n4. Lunchroom: contains class clown enemy. \n5. Bathroom")
     #print statement to ask them what room they want to go into
 
     #While true loop for room picking
