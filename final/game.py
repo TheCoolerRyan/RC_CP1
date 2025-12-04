@@ -56,7 +56,7 @@ def stat_increase(stat, gain):
 #def lose(stat):
 def lose(stat):
     #If your lose stats are greater than 3, return true to end the game
-    if stat[lose] == 3:
+    if stat[lose] >= 3:
         return True
     #else:
     else:
@@ -70,7 +70,9 @@ def fight_room(stat,room,beaten):
     if room == 1:
         pass
         #ask them if they want to by an upgrade/item
-
+        yes = input("Would you like to purchase an item or a upgrade? If you do put Yes, else put No").strip().upper()
+        if yes == "Yes":
+            pass        #######################################################################################
         #def stat_increase
 
         #Make sure not to allow them to buy the stats multiple times.
@@ -587,21 +589,22 @@ while finished_game == False and failed == False:
 #while game_finished == Fales and failed == False (These are all of the different ways to win or lose.)
     check = lose(stat)
     #Check to see if they have lost to many times to continue to fight, if they have, exit the loop.
-    if check == False:
+    if check == True:
         print("You have failed in your conquest by failing to weak enemies to much. You will always be a lonely side character...")
         break
     else:
         pass
     #Print a list of room numbers and there base purposes
-    print(f"There are 9 rooms you can go to. \n1. Dorms: This is were you will spend your gold from your hard earned wins to buy stat increases or there are our gucci items. Everything costs 2 gold, you have {stat['Gold']} gold. \n2. Computer lab: contains the nerd enemy \n3. Gym: Contains the Jock enemy. \n4. Lunchroom: contains class clown enemy. \n5. Bathroom")
-    #print statement to ask them what room they want to go into
-
+    print(f"There are 9 rooms you can go to. \n1. Dorms: This is were you will spend your gold from your hard earned wins to buy stat increases or there are our gucci items. Everything costs 2 gold, you have {stat['Gold']} gold. \n2. Computer lab: contains the nerd enemy \n3. Gym: Contains the Jock enemy. \n4. Lunchroom: contains class clown enemy. \n5. Bathroom: contains the slacker enemy. \n6. Hallway: contains THE CHILL GUY (Don't even think about fighting him). \n7. Auditorium: contains the actor enemy. \n8. Principle's office: contains the bully enemy. \n9. Student counsel room: Contains the final boss called, 'The Student Council President' or the MAIN CHARACTER. To fight him you must beat at least two others first.")
     #While true loop for room picking
+    while True:
         #Ask them what room they want to go into.
-
-        #Check if room is valid by using .isdigit() and int()    (.isdigit() checks to see if there is a number in a sentance, int() changes that number in the sentance to just a number.)
-        #else:
-            #print that there input is incorrect or it has already been picked.
+        room = input("What room would you like to go to? (1-9)")
+        if room.isdigit() == False or room > 9:
+            print("That is not a number/option available...")
+        else:
+            room = int(room)
+            break
     #Run the fight function as well as the lose function to start the game.
-
+    stat, beaten, finished_game, failed = fight_room(stat,room,beaten)
     #stat, finished_game, failed = fight_room(stat, room)
