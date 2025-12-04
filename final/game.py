@@ -132,9 +132,15 @@ def fight_room(stat,room,beaten):
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
                 if t_win >= 3:
                     print("You have vanquished your foe, and now you have more aura!!!")
-                #if you win, add gold and one win to your stats as well as adding the room to the beaten list
-
+                #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
+                    stat["Win"] += 1
+                    stat["Gold"] +=1
+                    room.append(beaten)
                 #else and one loss to your stats and add the room to the 'beaten' list
+                elif t_loss >= 3:
+                    print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
+                    stat["Lose"] += 1
+                    room.append(beaten)
         #else:
             #Print of thing telling the person this room has already been concured or that the number is to high
 
