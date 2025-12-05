@@ -106,6 +106,7 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Wisdom"
                     chain = b_wisdom
+                    print(f"The bot got chosen to pick, and he picked {attack}!")
                 #else:
                 else:
                     #While True:
@@ -179,6 +180,7 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Strength"
                     chain = b_strength
+                    print(f"The bot got chosen to pick, and he picked {attack}!")
                 #else:
                 else:
                     #While True:
@@ -252,6 +254,7 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Wisdom"
                     chain = b_wisdom
+                    print(f"The bot got chosen to pick, and he picked {attack}!")
                 #else:
                 else:
                     #While True:
@@ -325,6 +328,7 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Strength"
                     chain = b_strength
+                    print(f"The bot got chosen to pick, and he picked {attack}!")
                 #else:
                 else:
                     #While True:
@@ -463,6 +467,7 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Charm"
                     chain = b_charm
+                    print(f"The bot got chosen to pick, and he picked {attack}!")
                 #else:
                 else:
                     #While True:
@@ -536,6 +541,7 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Wisdom"
                     chain = b_wisdom
+                    print(f"The bot got chosen to pick, and he picked {attack}!")
                 #else:
                 else:
                     #While True:
@@ -586,7 +592,7 @@ def fight_room(stat,room,beaten):
                     beaten.append(room)
                     break
         else:
-            #Print of thing telling the person this room has already been concured or that the number is to high
+            #CHeck to see if its number nine.
             print("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
     return stat, beaten, finished_game, failed
 
