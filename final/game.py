@@ -9,8 +9,9 @@ stat = { "Charm": 8,
       "Wisdom": 8,
       "Strength": 8,
       "Win": 0,
-      "Lose": 0,
-      "Gold": 0}
+      "Loss": 0,
+      "Gold": 0,
+      "Used": []}
 #Set functions
 
 # 1st function
@@ -18,23 +19,26 @@ stat = { "Charm": 8,
 def stat_increase(stat, gain):
     #Create the stat gains for crocs, nerdy_glasses, and Suit. the first item.
     #Make sure that they must have gold and that we return new stats.
-    if gain == "Crocs" and stat["Gold"] > 1:
+    if gain == "Crocs" and stat["Gold"] > 1 and gain not in stat["Used"]:
         stat["Charm"] -= 2
         stat["wisdom"] -= 2
         stat["strength"] += 4
         stat["Gold"] -=2
+        stat["Used"].append(gain)
         return stat
-    elif gain == "Nerdy Glasses" and stat["Gold"] > 1:
+    elif gain == "Nerdy Glasses" and stat["Gold"] > 1 and gain not in stat["Used"]:
         stat["Charm"] -= 2
         stat["Wisdom"] += 4
         stat["Strength"] -= 2
         stat["Gold"] -=2
+        stat["Used"].append(gain)
         return stat
-    elif gain == "Suit" and stat["Gold"] > 1:
+    elif gain == "Suit" and stat["Gold"] > 1 and gain not in stat["Used"]:
         stat["Charm"] += 4
         stat["Wisdom"] -= 2
         stat["Strength"] -= 2
         stat["Gold"] -=2
+        stat["Used"].append(gain)
         return stat
     elif gain == "Charm" and stat["Gold"] > 1:
         stat["Charm"] += 2
@@ -56,7 +60,7 @@ def stat_increase(stat, gain):
 #def lose(stat):
 def lose(stat):
     #If your lose stats are greater than 3, return true to end the game
-    if stat[lose] >= 3:
+    if stat["Loss"] >= 3:
         return True
     #else:
     else:
@@ -66,13 +70,21 @@ def lose(stat):
 # 3rd function
 #def fight_room(stat, room)
 def fight_room(stat,room,beaten):
+    finished_game = False
+    failed = False
     #if room == 1:
     if room == 1:
-        pass
         #ask them if they want to by an upgrade/item
-        yes = input("Would you like to purchase an item or a upgrade? If you do put Yes, else put No").strip().upper()
+        yes = input("Would you like to purchase an item or a upgrade? If you do put Yes, else put No").strip().capitalize()
         if yes == "Yes":
-            pass        #######################################################################################
+            while True:
+                gain = input("What would you like to buy? \nCrocs: +4 to strength, -2 to wisdom,-2 charm \nNerdy Glasses: +4 wisdom, -2 charm, -2 strength \nSuit: +4 charm, -2 wisdom, -2 strength \nYou can also purchase basic increases to eather Charm, Wisdom, or Strength that each +2 to their respective stat and don't give any decreases. (All items and stat increases cost two gold, if you don't have enough you just won" \
+                "t get the item (You also won't lose your gold...))").strip().capitalize()
+                if gain == "Crocs" or gain == "Nerdy Glasses" or gain == "Suit" or gain == "Charm" or gain == "Strength" or gain == "Wisdom":
+                    break
+                else:
+                    print("That is not a valid option...")
+            stat_increase(stat, gain)
         #def stat_increase
 
         #Make sure not to allow them to buy the stats multiple times.
@@ -99,7 +111,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -142,7 +154,7 @@ def fight_room(stat,room,beaten):
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
-                    stat["Lose"] += 1
+                    stat["loss"] += 1
                     room.append(beaten)
                     break
         #else:
@@ -172,7 +184,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -215,7 +227,7 @@ def fight_room(stat,room,beaten):
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
-                    stat["Lose"] += 1
+                    stat["Loss"] += 1
                     room.append(beaten)
                     break
         #else:
@@ -245,7 +257,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -288,7 +300,7 @@ def fight_room(stat,room,beaten):
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
-                    stat["Lose"] += 1
+                    stat["loss"] += 1
                     room.append(beaten)
                     break
         #else:
@@ -318,7 +330,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -361,7 +373,7 @@ def fight_room(stat,room,beaten):
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
-                    stat["Lose"] += 1
+                    stat["loss"] += 1
                     room.append(beaten)
                     break
         #else:
@@ -383,7 +395,7 @@ def fight_room(stat,room,beaten):
                     #Talk about how chill the guy is
                     print("The chill guy is so chill, he lets you pick what to attack with. Your a monster for hurting someone who has done no wrong, he's just a chill guy!!!")
                     #Ask the user what stat they would like to use.
-                    attack = input("What stat would you like to attack with (You monster!)? Wisdom, Strength, or Charm?").strip().upper()
+                    attack = input("What stat would you like to attack with (You monster!)? Wisdom, Strength, or Charm?").strip().capitalize()
                     #check if its one of the three actual stats.
                     if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                         #Break to get out of loop
@@ -426,7 +438,7 @@ def fight_room(stat,room,beaten):
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("He was to chill for you >:)")
-                    stat["Lose"] += 1
+                    stat["loss"] += 1
                     room.append(beaten)
                     break
         #else:
@@ -456,7 +468,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -499,7 +511,7 @@ def fight_room(stat,room,beaten):
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
-                    stat["Lose"] += 1
+                    stat["loss"] += 1
                     room.append(beaten)
                     break
         #else:
@@ -529,7 +541,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().upper()
+                        attack = input("What stat would you like to attack with? Wisdom, Strength, or Charm?").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -578,33 +590,47 @@ def fight_room(stat,room,beaten):
             print("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
     return stat, beaten, finished_game, failed
 
-    
-finished_game = False
-failed = False
-#Explain the game through a print statment
-print("Explanation")
 
 #Make a loop to go through the game
-while finished_game == False and failed == False:
-#while game_finished == Fales and failed == False (These are all of the different ways to win or lose.)
-    check = lose(stat)
-    #Check to see if they have lost to many times to continue to fight, if they have, exit the loop.
-    if check == True:
-        print("You have failed in your conquest by failing to weak enemies to much. You will always be a lonely side character...")
-        break
+while True:
+    finished_game = False
+    failed = False
+    #set the list for beaten people
+    beaten = []
+    #set stat dictionary that will hold win lose and gold as well
+    stat = {"Charm": 8,
+            "Wisdom": 8,
+            "Strength": 8,
+            "Win": 0,
+            "Loss": 0,
+            "Gold": 0,
+            "Used": []}
+    print("Explanation")
+    while finished_game == False and failed == False:
+    #while game_finished == Fales and failed == False (These are all of the different ways to win or lose.)
+        check = lose(stat)
+        #Check to see if they have lost to many times to continue to fight, if they have, exit the loop.
+        if check == True:
+            print("You have failed in your conquest by failing to weak enemies to much. You will always be a lonely side character... (maybe)")
+            break
+        else:
+            pass
+        #Print a list of room numbers and there base purposes
+        print(f"There are 9 rooms you can go to. \n1. Dorms: This is were you will spend your gold from your hard earned wins to buy stat increases or there are our gucci items. Everything costs 2 gold, you have {stat['Gold']} gold. \n2. Computer lab: contains the nerd enemy \n3. Gym: Contains the Jock enemy. \n4. Lunchroom: contains class clown enemy. \n5. Bathroom: contains the slacker enemy. \n6. Hallway: contains THE CHILL GUY (Don't even think about fighting him). \n7. Auditorium: contains the actor enemy. \n8. Principle's office: contains the bully enemy. \n9. Student counsel room: Contains the final boss called, 'The Student Council President' or the MAIN CHARACTER. To fight him you must beat at least two others first.")
+        #While true loop for room picking
+        while True:
+            #Ask them what room they want to go into.
+            room = input("What room would you like to go to? (1-9)").strip()
+            if room.isdigit() == False or int(room) > 9:
+                print("That is not a number/option available...")
+            else:
+                room = int(room)
+                break
+        #Run the fight function as well as the lose function to start the game.
+        stat, beaten, finished_game, failed = fight_room(stat,room,beaten)
+    begin_again = input("Would you like to reincarnate and restart? if you do please type Yes, otherwise put No.").strip().capitalize()
+    if begin_again == "Yes":
+        finished_game = False; failed = False
+        ("The journey is being repeated... good luck...")
     else:
         pass
-    #Print a list of room numbers and there base purposes
-    print(f"There are 9 rooms you can go to. \n1. Dorms: This is were you will spend your gold from your hard earned wins to buy stat increases or there are our gucci items. Everything costs 2 gold, you have {stat['Gold']} gold. \n2. Computer lab: contains the nerd enemy \n3. Gym: Contains the Jock enemy. \n4. Lunchroom: contains class clown enemy. \n5. Bathroom: contains the slacker enemy. \n6. Hallway: contains THE CHILL GUY (Don't even think about fighting him). \n7. Auditorium: contains the actor enemy. \n8. Principle's office: contains the bully enemy. \n9. Student counsel room: Contains the final boss called, 'The Student Council President' or the MAIN CHARACTER. To fight him you must beat at least two others first.")
-    #While true loop for room picking
-    while True:
-        #Ask them what room they want to go into.
-        room = input("What room would you like to go to? (1-9)")
-        if room.isdigit() == False or room > 9:
-            print("That is not a number/option available...")
-        else:
-            room = int(room)
-            break
-    #Run the fight function as well as the lose function to start the game.
-    stat, beaten, finished_game, failed = fight_room(stat,room,beaten)
-    #stat, finished_game, failed = fight_room(stat, room)
