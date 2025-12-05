@@ -53,7 +53,7 @@ def stat_increase(stat, gain):
         stat["Gold"] -= 2
         return stat
     else:
-        print("You don't have enough money...")
+        print("You don't have enough money or its an already chosen item...")
         return stat
 
 # 2nd function
@@ -149,13 +149,13 @@ def fight_room(stat,room,beaten):
                 #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
                     stat["Win"] += 1
                     stat["Gold"] +=1
-                    room.append(beaten)
+                    beaten.append(room)
                     break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
-                    stat["loss"] += 1
-                    room.append(beaten)
+                    stat["Loss"] += 1
+                    beaten.append(room)
                     break
         #else:
         else:
@@ -222,13 +222,13 @@ def fight_room(stat,room,beaten):
                 #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
                     stat["Win"] += 1
                     stat["Gold"] +=1
-                    room.append(beaten)
+                    beaten.append(room)
                     break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
                     stat["Loss"] += 1
-                    room.append(beaten)
+                    beaten.append(room)
                     break
         #else:
         else:
@@ -295,13 +295,13 @@ def fight_room(stat,room,beaten):
                 #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
                     stat["Win"] += 1
                     stat["Gold"] +=1
-                    room.append(beaten)
+                    beaten.append(room)
                     break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
-                    stat["loss"] += 1
-                    room.append(beaten)
+                    stat["Loss"] += 1
+                    beaten.append(room)
                     break
         #else:
         else:
@@ -368,13 +368,13 @@ def fight_room(stat,room,beaten):
                 #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
                     stat["Win"] += 1
                     stat["Gold"] +=1
-                    room.append(beaten)
+                    beaten.append(room)
                     break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
-                    stat["loss"] += 1
-                    room.append(beaten)
+                    stat["Loss"] += 1
+                    beaten.append(room)
                     break
         #else:
         else:
@@ -433,13 +433,13 @@ def fight_room(stat,room,beaten):
                 #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
                     stat["Win"] += 1
                     stat["Gold"] +=1
-                    room.append(beaten)
+                    beaten.append(room)
                     break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("He was to chill for you >:)")
-                    stat["loss"] += 1
-                    room.append(beaten)
+                    stat["Loss"] += 1
+                    beaten.append(room)
                     break
         #else:
         else:
@@ -506,13 +506,13 @@ def fight_room(stat,room,beaten):
                 #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
                     stat["Win"] += 1
                     stat["Gold"] +=1
-                    room.append(beaten)
+                    beaten.append(room)
                     break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
-                    stat["loss"] += 1
-                    room.append(beaten)
+                    stat["Loss"] += 1
+                    beaten.append(room)
                     break
         #else:
         else:
@@ -577,13 +577,13 @@ def fight_room(stat,room,beaten):
                 if t_win >= 3:
                     print("You have vanquished your foe, and now you are the main character!!! But at what cost...")
                     finished_game = True
-                    room.append(beaten)
+                    beaten.append(room)
                     break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
                     print("You did not have enough arua to vanquish the foe. In fact, your arua has gone down so much from loseing that you are being expelled. It's game over...")
                     failed = True
-                    room.append(beaten)
+                    beaten.append(room)
                     break
         else:
             #Print of thing telling the person this room has already been concured or that the number is to high
@@ -616,6 +616,12 @@ while True:
         else:
             pass
         #Print a list of room numbers and there base purposes
+        print("Here are all of your stats:")
+        for key, value in stat.items():
+            if isinstance(value, list):
+                print(f"{key}: {', '.join(map(str, value))}")
+            else:
+                print(f"{key}: {value}")
         print(f"There are 9 rooms you can go to. \n1. Dorms: This is were you will spend your gold from your hard earned wins to buy stat increases or there are our gucci items. Everything costs 2 gold, you have {stat['Gold']} gold. \n2. Computer lab: contains the nerd enemy \n3. Gym: Contains the Jock enemy. \n4. Lunchroom: contains class clown enemy. \n5. Bathroom: contains the slacker enemy. \n6. Hallway: contains THE CHILL GUY (Don't even think about fighting him). \n7. Auditorium: contains the actor enemy. \n8. Principle's office: contains the bully enemy. \n9. Student counsel room: Contains the final boss called, 'The Student Council President' or the MAIN CHARACTER. To fight him you must beat at least two others first.")
         #While true loop for room picking
         while True:
