@@ -2,12 +2,14 @@
 
 import random
 
+
 #set the list for beaten people
 beaten = []
 #set stat dictionary that will hold win lose and gold as well
 stat = { "Charm": 8,
       "Wisdom": 8,
       "Strength": 8,
+      "Roll": 2,
       "Win": 0,
       "Loss": 0,
       "Gold": 0,
@@ -40,6 +42,11 @@ def stat_increase(stat, gain):
         stat["Gold"] -=2
         stat["Used"].append(gain)
         return stat
+    elif gain == "Dice" and stat["Gold"] > 1 and gain not in stat["Used"]:
+        stat["Roll"] += 1
+        stat["Gold"] -=2
+        stat["Used"].append(gain)
+        return stat
     elif gain == "Charm" and stat["Gold"] > 1:
         stat["Charm"] += 2
         stat["Gold"] -= 2
@@ -53,7 +60,7 @@ def stat_increase(stat, gain):
         stat["Gold"] -= 2
         return stat
     else:
-        print("You don't have enough money or its an already chosen item...")
+        print("\nYou don't have enough money or its an already chosen item...")
         return stat
 
 # 2nd function
@@ -78,9 +85,9 @@ def fight_room(stat,room,beaten):
         yes = input("Would you like to purchase an item or a upgrade? If you do put Yes, else put No").strip().capitalize()
         if yes == "Yes":
             while True:
-                gain = input("What would you like to buy? \nCrocs: +4 to strength, -2 to wisdom,-2 charm \nNerdy Glasses: +4 wisdom, -2 charm, -2 strength \nSuit: +4 charm, -2 wisdom, -2 strength \nYou can also purchase basic increases to eather Charm, Wisdom, or Strength that each +2 to their respective stat and don't give any decreases. (All items and stat increases cost two gold, if you don't have enough you just won" \
+                gain = input("What would you like to buy? \nCrocs: +4 to strength, -2 to wisdom,-2 charm \nNerdy Glasses: +4 wisdom, -2 charm, -2 strength \nSuit: +4 charm, -2 wisdom, -2 strength \nDice: This adds one to your roll. This upgrade increase your chance of being chosen to pick the stat to fight with from 1/2 to 2/3\nYou can also purchase basic increases to eather Charm, Wisdom, or Strength that each +2 to their respective stat and don't give any decreases. (All items and stat increases cost two gold, if you don't have enough you just won" \
                 "t get the item (You also won't lose your gold...))").strip().capitalize()
-                if gain == "Crocs" or gain == "Nerdy Glasses" or gain == "Suit" or gain == "Charm" or gain == "Strength" or gain == "Wisdom":
+                if gain == "Crocs" or gain == "Nerdy Glasses" or gain == "Suit" or gain == "Dice" or gain == "Charm" or gain == "Strength" or gain == "Wisdom":
                     break
                 else:
                     print("That is not a valid option...")
@@ -101,7 +108,7 @@ def fight_room(stat,room,beaten):
             #While True:
             while True:
                 #Roll for who gets to decide the attack.
-                choice = random.randint(1,2)
+                choice = random.randint(1,stat["Roll"])
                 #if choice = 1:
                 if choice == 1:
                     #set attack to the bots strongest
@@ -177,7 +184,7 @@ def fight_room(stat,room,beaten):
             #While True:
             while True:
                 #Roll for who gets to decide the attack.
-                choice = random.randint(1,2)
+                choice = random.randint(1,stat["Roll"])
                 #if choice = 1:
                 if choice == 1:
                     #set attack to the bots strongest
@@ -253,7 +260,7 @@ def fight_room(stat,room,beaten):
             #While True:
             while True:
                 #Roll for who gets to decide the attack.
-                choice = random.randint(1,2)
+                choice = random.randint(1,stat["Roll"])
                 #if choice = 1:
                 if choice == 1:
                     #set attack to the bots strongest
@@ -320,6 +327,7 @@ def fight_room(stat,room,beaten):
     elif room == 5:
         #if room isn't in beaten list:
         if 5 not in beaten:
+            print("Slacker - Buzz off! Unless you here to trade...")
             #write out all of the enemy stats here.
             b_strength = 10; b_wisdom = 7; b_charm = 7
             #Set base wins and losses to 0 as variables
@@ -328,7 +336,7 @@ def fight_room(stat,room,beaten):
             #While True:
             while True:
                 #Roll for who gets to decide the attack.
-                choice = random.randint(1,2)
+                choice = random.randint(1,stat["Roll"])
                 #if choice = 1:ss
                 if choice == 1:
                     #set attack to the bots strongest
@@ -395,6 +403,7 @@ def fight_room(stat,room,beaten):
     elif room == 6:
         #if room isn't in beaten list:
         if 6 not in beaten:
+            print("Chill guy - You don't need to do this... Can't we all just be friends?")
             #write out all of the enemy stats here.
             b_strength = 8; b_wisdom = 8; b_charm = 8
             #Set base wins and losses to 0 as variables
@@ -446,6 +455,7 @@ def fight_room(stat,room,beaten):
                     stat["Win"] += 1
                     stat["Gold"] +=1
                     beaten.append(room)
+                    print("Chill guy - What did I ever do to you..?")
                     break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
@@ -461,6 +471,7 @@ def fight_room(stat,room,beaten):
     elif room == 7:
         #if room isn't in beaten list:
         if 7 not in beaten:
+            print("Actor - 'Hide not thy poison with such sugar'd words; Lay not thy hands on me; forbear, I say! Their touch affrights me as a serpent's sting.'")
             #write out all of the enemy stats here.
             b_strength = 6; b_wisdom = 9; b_charm = 10
             #Set base wins and losses to 0 as variables
@@ -469,7 +480,7 @@ def fight_room(stat,room,beaten):
             #While True:
             while True:
                 #Roll for who gets to decide the attack.
-                choice = random.randint(1,2)
+                choice = random.randint(1,stat["Roll"])
                 #if choice = 1:
                 if choice == 1:
                     #set attack to the bots strongest
@@ -536,6 +547,7 @@ def fight_room(stat,room,beaten):
             print("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
     
     elif room == 8:
+        print("Bully - Heh, finally got enough courage to stand up to me? Probably just stupiditiy!")
         #if room isn't in beaten list:
         if 8 not in beaten:
             #write out all of the enemy stats here.
@@ -546,7 +558,7 @@ def fight_room(stat,room,beaten):
             #While True:
             while True:
                 #Roll for who gets to decide the attack.
-                choice = random.randint(1,2)
+                choice = random.randint(1,stat["Roll"])
                 #if choice = 1:
                 if choice == 1:
                     #set attack to the bots strongest
@@ -615,6 +627,7 @@ def fight_room(stat,room,beaten):
     elif room == 9:
         #if room isn't in beaten list:
         if stat["Win"] >= 2:
+            print("Student council president - I've been expecting you... now, show me why you should be the main character!!!")
             #write out all of the enemy stats here.
             b_strength = 10; b_wisdom = 14; b_charm = 12
             #Set base wins and losses to 0 as variables
@@ -623,7 +636,7 @@ def fight_room(stat,room,beaten):
             #While True:
             while True:
                 #Roll for who gets to decide the attack.
-                choice = random.randint(1,2)
+                choice = random.randint(1,stat["Roll"])
                 #if choice = 1:
                 if choice == 1:
                     #set attack to the bots strongest
@@ -697,11 +710,12 @@ while True:
     stat = {"Charm": 9,
             "Wisdom": 9,
             "Strength": 9,
+            "Roll": 2,
             "Win": 0,
             "Loss": 0,
             "Gold": 0,
             "Used": []}
-    print("\nIn this game you have been reincarnated back to high school, but theres just one problem... You are a worthless side character who doesn't get anyone!:( With the realization of this you have begone on your journey to defeat the nobles, (people who are actually cool in their feild), and eventually defeat the final boss (Student concil presedent aka the main character) to becoming the main character. I wish you luck in your journey to become someone your mother would be proud of, but with your looks, brains, and charm that might be a bit hard...")
+    print("\nIn this game you have been reincarnated back to high school, but theres just one problem... You are a worthless side character who doesn't get anyone!:( With the realization of this you have begone on your journey to defeat the nobles, (people who are actually cool in their feild), and eventually defeat the final boss (Student concil presedent aka the main character) to becoming the main character. You will need to imploy your 3 main stats: Wisdom, Charm, and Strength to battle the enemy, be carefull though, because you will not always chose what stat to attack with. I wish you luck in your journey to become someone your mother would be proud of, but with your looks, brains, and charm that might be a bit hard...")
     while finished_game == False and failed == False:
     #while game_finished == Fales and failed == False (These are all of the different ways to win or lose.)
         check = lose(stat)
