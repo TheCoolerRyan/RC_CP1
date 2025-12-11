@@ -91,10 +91,10 @@ def fight_room(stat,room,beaten):
     #if room == 1:
     if room == 1:
         #ask them if they want to by an upgrade/item
-        yes = input("Would you like to purchase an item or a upgrade? If you do put Yes, else put No").strip().capitalize()
+        yes = input("Would you like to purchase an item or a upgrade? If you do put Yes, else put No:").strip().capitalize()
         if yes == "Yes":
             while True:
-                gain = input("What would you like to buy? \nCrocs: +4 to strength, -2 to wisdom,-2 charm \nNerdy Glasses: +4 wisdom, -2 charm, -2 strength \nSuit: +4 charm, -2 wisdom, -2 strength \nDice: This adds one to your roll. This upgrade increase your chance of being chosen to pick the stat to fight with from 1/2 to 2/3\nYou can also purchase basic increases to eather Charm, Wisdom, or Strength that each +2 to their respective stat and don't give any decreases. (All items and stat increases cost two gold, if you don't have enough you just won't get the item (You also won't lose your gold...))").strip().capitalize()
+                gain = input("\nWhat would you like to buy? \nCrocs: +4 to strength, -2 to wisdom,-2 charm \nNerdy Glasses: +4 wisdom, -2 charm, -2 strength \nSuit: +4 charm, -2 wisdom, -2 strength \nDice: This adds one to your roll. This upgrade increase your chance of being chosen to pick the stat to fight with from 1/2 to 2/3\nYou can also purchase basic increases to eather Charm, Wisdom, or Strength that each +2 to their respective stat and don't give any decreases. (All items and stat increases cost two gold, if you don't have enough you just won't get the item (You also won't lose your gold...)):").strip().capitalize()
                 if gain == "Crocs" or gain == "Nerdy Glasses" or gain == "Suit" or gain == "Dice" or gain == "Charm" or gain == "Strength" or gain == "Wisdom":
                     break
                 else:
@@ -109,7 +109,7 @@ def fight_room(stat,room,beaten):
         if 2 not in beaten:
             typing("\nNerd - So I see you have come to fight, well I hope your calculashions were correct!")
             #write out all of the enemy stats here.
-            b_strength = 5; b_wisdom = 10; b_charm = 2
+            b_strength = 5; b_wisdom = 10; b_charm = 5
             #Set base wins and losses to 0 as variables
             t_win = 0
             t_loss = 0
@@ -122,13 +122,13 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Wisdom"
                     chain = b_wisdom
-                    typing(f"The bot got chosen to pick, and he picked {attack}!")
+                    typing(f"\nThe bot got chosen to pick, and he picked {attack}!")
                 #else:
                 else:
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?\n").strip().capitalize()
+                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?:\n").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -150,20 +150,20 @@ def fight_room(stat,room,beaten):
                 human_roll = random.randint(1, stat[attack])
                 bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-                typing(f"The bot scored a {bot_roll} and you scored a {human_roll}")
+                typing(f"\nThe bot scored a {bot_roll} and you scored a {human_roll}")
                 if human_roll >bot_roll:
                     typing("You have gained a point!")
                     t_win += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 elif bot_roll > human_roll:
                     typing("You have sadly gained one loss...")
                     t_loss += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 else:
-                    typing("It's a tie!!!")
+                    typing("It's a tie!!!\n")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
                 if t_win >= 3:
-                    typing("You have vanquished your foe, and now you have more aura!!!")
+                    typing("\nYou have vanquished your foe, and now you have more aura!!!\n")
                 #if you win, add gold and one win to your stats as well as adding the room to the beaten list                   
                     stat["Win"] += 1
                     stat["Gold"] +=1
@@ -171,7 +171,7 @@ def fight_room(stat,room,beaten):
                     break
                 #else and one loss to your stats and add the room to the 'beaten' list
                 elif t_loss >= 3:
-                    typing("You did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
+                    typing("\nYou did not have enough arua to vanquish the foe. In fact, your arua has gone down from loseing.")
                     stat["Loss"] += 1
                     beaten.append(room)
                     break
@@ -185,7 +185,7 @@ def fight_room(stat,room,beaten):
         if 3 not in beaten:
             #write out all of the enemy stats here.
             typing("\nJock - Quite bold of you to come here, after all it is my home court!")
-            b_strength = 11; b_wisdom = 4; b_charm = 7
+            b_strength = 11; b_wisdom = 6; b_charm = 7
             #Set base wins and losses to 0 as variables
             t_win = 0
             t_loss = 0
@@ -204,7 +204,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?\n").strip().capitalize()
+                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?:\n").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -226,17 +226,17 @@ def fight_room(stat,room,beaten):
                 human_roll = random.randint(1, stat[attack])
                 bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-                typing(f"The bot scored a {bot_roll} and you scored a {human_roll}")
+                typing(f"\nThe bot scored a {bot_roll} and you scored a {human_roll}")
                 if human_roll >bot_roll:
                     typing("You have gained a point!")
                     t_win += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 elif bot_roll > human_roll:
                     typing("You have sadly gained one loss...") 
                     t_loss += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 else:
-                    typing("It's a tie!!!")
+                    typing("It's a tie!!!\n")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
                 if t_win >= 3:
                     typing("You have vanquished your foe, and now you have more aura!!!")
@@ -280,7 +280,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?\n").strip().capitalize()
+                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?:\n").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -302,17 +302,17 @@ def fight_room(stat,room,beaten):
                 human_roll = random.randint(1, stat[attack])
                 bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-                typing(f"The bot scored a {bot_roll} and you scored a {human_roll}")
+                typing(f"\nThe bot scored a {bot_roll} and you scored a {human_roll}")
                 if human_roll >bot_roll:
                     typing("You have gained a point!")
                     t_win += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 elif bot_roll > human_roll:
                     typing("You have sadly gained one loss...")
                     t_loss += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 else:
-                    typing("It's a tie!!!")
+                    typing("It's a tie!!!\n")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
                 if t_win >= 3:
                     typing("You have vanquished your foe, and now you have more aura!!!")
@@ -356,7 +356,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?\n").strip().capitalize()
+                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?:\n").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -378,17 +378,17 @@ def fight_room(stat,room,beaten):
                 human_roll = random.randint(1, stat[attack])
                 bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-                typing(f"The bot scored a {bot_roll} and you scored a {human_roll}")
+                typing(f"\nThe bot scored a {bot_roll} and you scored a {human_roll}")
                 if human_roll >bot_roll:
                     typing("You have gained a point!")
                     t_win += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 elif bot_roll > human_roll:
                     typing("You have sadly gained one loss...")
                     t_loss += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 else:
-                    typing("It's a tie!!!")
+                    typing("It's a tie!!!\n")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
                 if t_win >= 3:
                     typing("You have vanquished your foe, and now you have more aura!!!")
@@ -413,7 +413,7 @@ def fight_room(stat,room,beaten):
         if 6 not in beaten:
             typing("Chill guy - You don't need to do this... Can't we all just be friends?")
             #write out all of the enemy stats here.
-            b_strength = 8; b_wisdom = 8; b_charm = 8
+            b_strength = 9; b_wisdom = 9; b_charm = 9
             #Set base wins and losses to 0 as variables
             t_win = 0
             t_loss = 0
@@ -423,7 +423,7 @@ def fight_room(stat,room,beaten):
                     #Talk about how chill the guy is
                     typing("The chill guy is so chill, he lets you pick what to attack with. Your a monster for hurting someone who has done no wrong, he's just a chill guy!!!")
                     #Ask the user what stat they would like to use.
-                    attack = input("What stat would you like to attack with (You monster!)? Wisdom, Strength, or Charm?").strip().capitalize()
+                    attack = input("\nWhat stat would you like to attack with (You monster!)? Wisdom, Strength, or Charm?:\n").strip().capitalize()
                     #check if its one of the three actual stats.
                     if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                         #Break to get out of loop
@@ -445,17 +445,17 @@ def fight_room(stat,room,beaten):
                 human_roll = random.randint(1, stat[attack])
                 bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-                typing(f"The bot scored a {bot_roll} and you scored a {human_roll}")
+                typing(f"\nThe bot scored a {bot_roll} and you scored a {human_roll}")
                 if human_roll >bot_roll:
                     typing("You have gained a point!")
                     t_win += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 elif bot_roll > human_roll:
                     typing("You have sadly gained one loss...")
                     t_loss += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 else:
-                    typing("It's a tie!!!")
+                    typing("It's a tie!!!\n")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
                 if t_win >= 3:
                     typing("You have vanquished your foe, and now you have more aura!!!")
@@ -500,7 +500,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?\n").strip().capitalize()
+                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?:\n").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -522,17 +522,17 @@ def fight_room(stat,room,beaten):
                 human_roll = random.randint(1, stat[attack])
                 bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-                typing(f"The bot scored a {bot_roll} and you scored a {human_roll}")
+                typing(f"\nThe bot scored a {bot_roll} and you scored a {human_roll}")
                 if human_roll >bot_roll:
                     typing("You have gained a point!")
                     t_win += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 elif bot_roll > human_roll:
                     typing("You have sadly gained one loss...")
                     t_loss += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 else:
-                    typing("It's a tie!!!")
+                    typing("It's a tie!!!\n")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
                 if t_win >= 3:
                     typing("You have vanquished your foe, and now you have more aura!!!")
@@ -559,7 +559,7 @@ def fight_room(stat,room,beaten):
         #if room isn't in beaten list:
         if 8 not in beaten:
             #write out all of the enemy stats here.
-            b_strength = 12; b_wisdom = 5; b_charm = 4
+            b_strength = 12; b_wisdom = 7; b_charm = 6
             #Set base wins and losses to 0 as variables
             t_win = 0
             t_loss = 0
@@ -578,7 +578,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?\n").strip().capitalize()
+                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?:\n").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -600,17 +600,17 @@ def fight_room(stat,room,beaten):
                 human_roll = random.randint(1, stat[attack])
                 bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-                typing(f"The bot scored a {bot_roll} and you scored a {human_roll}")
+                typing(f"\nThe bot scored a {bot_roll} and you scored a {human_roll}")
                 if human_roll >bot_roll:
                     typing("You have gained a point!")
                     t_win += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 elif bot_roll > human_roll:
                     typing("You have sadly gained one loss...")
                     t_loss += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 else:
-                    typing("It's a tie!!!")
+                    typing("It's a tie!!!\n")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
                 if t_win >= 3:
                     typing("You have vanquished your foe, and now you have more aura!!!")
@@ -637,7 +637,7 @@ def fight_room(stat,room,beaten):
         if stat["Win"] >= 2:
             typing("Student council president - I've been expecting you... now, show me why you should be the main character!!!")
             #write out all of the enemy stats here.
-            b_strength = 10; b_wisdom = 14; b_charm = 12
+            b_strength = 11; b_wisdom = 15; b_charm = 13
             #Set base wins and losses to 0 as variables
             t_win = 0
             t_loss = 0
@@ -656,7 +656,7 @@ def fight_room(stat,room,beaten):
                     #While True:
                     while True:
                         #Ask the user what stat they would like to use.
-                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?\n").strip().capitalize()
+                        attack = input("\nWhat stat would you like to attack with? Wisdom, Strength, or Charm?:\n").strip().capitalize()
                         #check if its one of the three actual stats.
                         if attack == "Wisdom" or attack == "Strength" or attack == "Charm":
                             #Break to get out of loop
@@ -678,17 +678,17 @@ def fight_room(stat,room,beaten):
                 human_roll = random.randint(1, stat[attack])
                 bot_roll = random.randint(1, chain)
                 #Check to see which is greater and then add the win or loss.
-                typing(f"The bot scored a {bot_roll} and you scored a {human_roll}")
+                typing(f"\nThe bot scored a {bot_roll} and you scored a {human_roll}")
                 if human_roll >bot_roll:
                     typing("You have gained a point!")
                     t_win += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 elif bot_roll > human_roll:
                     typing("You have sadly gained one loss...")
                     t_loss += 1
-                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}")
+                    typing(f"Your wins are: {t_win} \nYour losses are: {t_loss}\n")
                 else:
-                    typing("It's a tie!!!")
+                    typing("It's a tie!!!\n")
                 #Check to see if the round was one or lost by using t_wins and t_loss variables
                 if t_win >= 3:
                     typing("You have vanquished your foe, and now you are the main character!!! But at what cost...")
@@ -734,6 +734,7 @@ while True:
         else:
             pass
         #Print a list of room numbers and there base purposes
+        typing("The three basic stats(Charm, Wisdom, and Strength) take there stat number and can roll up to that number when attacking, and roll increase your chances of picking by 1 every time.")
         typing("\nHere are all of your stats:")
         for key, value in stat.items():
             if isinstance(value, list):
@@ -743,19 +744,20 @@ while True:
         typing(f"\nThere are 9 rooms you can go to. \n1. Dorms: This is were you will spend your gold from your hard earned wins to buy stat increases or there are our gucci items. Everything costs 2 gold, you have {stat['Gold']} gold. \n2. Computer lab: contains the nerd enemy \n3. Gym: Contains the Jock enemy. \n4. Lunchroom: contains class clown enemy. \n5. Bathroom: contains the slacker enemy. \n6. Hallway: contains THE CHILL GUY (Don't even think about fighting him). \n7. Auditorium: contains the actor enemy. \n8. Principle's office: contains the bully enemy. \n9. Student counsel room: Contains the final boss called, 'The Student Council President' or the MAIN CHARACTER. To fight him you must beat at least two others first.")
         typing("\nThe rooms that have already been visited are:")
         beaten.sort()
-        typing(print*beaten, sep=', ')   ######################################
+        for item in beaten:
+            typing(str(item))
         #While true loop for room picking
         while True:
             #Ask them what room they want to go into.
-            room = input("\nWhat room would you like to go to? (1-9)").strip()
-            if room.isdigit() == False or int(room) > 9:
+            room = input("\nWhat room would you like to go to? (1-9):").strip()
+            if room.isdigit() == False or int(room) > 9 or int(room) < 1:
                 typing("That is not a number/option available...")
             else:
                 room = int(room)
                 break
         #Run the fight function as well as the lose function to start the game.
         stat, beaten, finished_game, failed = fight_room(stat,room,beaten)
-    begin_again = input("\nWould you like to reincarnate and restart? if you do please type Yes, otherwise put No.").strip().capitalize()
+    begin_again = input("\nWould you like to reincarnate and restart? if you do please type Yes, otherwise put No:").strip().capitalize()
     if begin_again == "Yes":
         finished_game = False; failed = False
         typing("\nThe journey is being repeated... good luck...")
