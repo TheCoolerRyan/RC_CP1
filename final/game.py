@@ -7,7 +7,7 @@ import time
 #set the list for beaten people
 beaten = []
 #set stat dictionary that will hold win lose and gold as well
-stat = { "Charm": 8,
+stat = {"Charm": 8,
       "Wisdom": 8,
       "Strength": 8,
       "Roll": 2,
@@ -69,7 +69,7 @@ def stat_increase(stat, gain):
         stat["Gold"] -= 2
         return stat
     else:
-        typing("\nYou don't have enough money or its an already chosen item...")
+        typing("\033[33m\nYou don't have enough money or its an already chosen item...")
         return stat
 
 # 2nd function
@@ -90,6 +90,7 @@ def fight_room(stat,room,beaten):
     failed = False
     #if room == 1:
     if room == 1:
+        print("\033[95m")
         #ask them if they want to by an upgrade/item
         yes = input("Would you like to purchase an item or a upgrade? If you do put Yes, else put No:").strip().capitalize()
         if yes == "Yes":
@@ -105,9 +106,10 @@ def fight_room(stat,room,beaten):
         #Make sure not to allow them to buy the stats multiple times.
     #elif room == 2:
     elif room == 2:
+        print("\033[31m")
         #if room isn't in beaten list:
         if 2 not in beaten:
-            typing("\nNerd - So I see you have come to fight, well I hope your calculashions were correct!")
+            typing("Nerd - Sho I she you have come to fight, well I hope your calculashions were correct!")
             #write out all of the enemy stats here.
             b_strength = 5; b_wisdom = 10; b_charm = 5
             #Set base wins and losses to 0 as variables
@@ -123,6 +125,8 @@ def fight_room(stat,room,beaten):
                     attack = "Wisdom"
                     chain = b_wisdom
                     typing(f"\nThe bot got chosen to pick, and he picked {attack}!")
+                    input("Do you want to acknowledge this?:")
+                    print("")
                 #else:
                 else:
                     #While True:
@@ -181,10 +185,11 @@ def fight_room(stat,room,beaten):
             typing("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
 
     elif room == 3:
+        print("\033[31m")
         #if room isn't in beaten list:
         if 3 not in beaten:
             #write out all of the enemy stats here.
-            typing("\nJock - Quite bold of you to come here, after all it is my home court!")
+            typing("Jock - Quite bold of you to come here, after all it is my home court!")
             b_strength = 11; b_wisdom = 6; b_charm = 7
             #Set base wins and losses to 0 as variables
             t_win = 0
@@ -198,7 +203,9 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Strength"
                     chain = b_strength
-                    typing(f"The bot got chosen to pick, and he picked {attack}!")
+                    typing(f"\nThe bot got chosen to pick, and he picked {attack}!")
+                    input("Do you want to acknowledge this?:")
+                    print("")
                 #else:
                 else:
                     #While True:
@@ -257,9 +264,10 @@ def fight_room(stat,room,beaten):
             typing("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
 
     elif room == 4:
+        print("\033[31m")
         #if room isn't in beaten list:
         if 4 not in beaten:
-            typing("\nClown - Hey were does the president keep his armies? 'hehe' In his sleevies... Come'on that was a good one, at least give me a little chuckle.")
+            typing("Clown - Hey were does the president keep his armies? 'hehe' In his sleevies... Come'on that was a good one, at least give me a little chuckle.")
             #write out all of the enemy stats here.
             b_strength = 6; b_wisdom = 10; b_charm = 9
             #Set base wins and losses to 0 as variables
@@ -274,7 +282,9 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Wisdom"
                     chain = b_wisdom
-                    typing(f"The bot got chosen to pick, and he picked {attack}!")
+                    typing(f"\nThe bot got chosen to pick, and he picked {attack}!")
+                    input("Do you want to acknowledge this?:")
+                    print("")
                 #else:
                 else:
                     #While True:
@@ -333,6 +343,7 @@ def fight_room(stat,room,beaten):
             typing("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
 
     elif room == 5:
+        print("\033[31m")
         #if room isn't in beaten list:
         if 5 not in beaten:
             typing("Slacker - Buzz off! Unless you here to trade...")
@@ -350,7 +361,9 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Strength"
                     chain = b_strength
-                    typing(f"The bot got chosen to pick, and he picked {attack}!")
+                    typing(f"\nThe bot got chosen to pick, and he picked {attack}!")
+                    input("Do you want to acknowledge this?:")
+                    print("")
                 #else:
                 else:
                     #While True:
@@ -409,6 +422,7 @@ def fight_room(stat,room,beaten):
             typing("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
 
     elif room == 6:
+        print("\033[31m")
         #if room isn't in beaten list:
         if 6 not in beaten:
             typing("Chill guy - You don't need to do this... Can't we all just be friends?")
@@ -477,6 +491,7 @@ def fight_room(stat,room,beaten):
             typing("You already tried hurting the chill guy... you monster... theres no longer a chill guy here.")
 
     elif room == 7:
+        print("\033[31m")
         #if room isn't in beaten list:
         if 7 not in beaten:
             typing("Actor - 'Hide not thy poison with such sugar'd words; Lay not thy hands on me; forbear, I say! Their touch affrights me as a serpent's sting.'")
@@ -494,7 +509,9 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Charm"
                     chain = b_charm
-                    typing(f"The bot got chosen to pick, and he picked {attack}!")
+                    typing(f"\nThe bot got chosen to pick, and he picked {attack}!")
+                    input("Do you want to acknowledge this?:")
+                    print("")
                 #else:
                 else:
                     #While True:
@@ -555,9 +572,10 @@ def fight_room(stat,room,beaten):
             typing("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
     
     elif room == 8:
-        typing("Bully - Heh, finally got enough courage to stand up to me? Probably just stupiditiy!")
+        print("\033[31m")
         #if room isn't in beaten list:
         if 8 not in beaten:
+            typing("Bully - Heh, finally got enough courage to stand up to me? Probably just stupiditiy!")
             #write out all of the enemy stats here.
             b_strength = 12; b_wisdom = 7; b_charm = 6
             #Set base wins and losses to 0 as variables
@@ -572,7 +590,9 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Strength"
                     chain = b_strength
-                    typing(f"The bot got chosen to pick, and he picked {attack}!")
+                    typing(f"\nThe bot got chosen to pick, and he picked {attack}!")
+                    input("Do you want to acknowledge this?:")
+                    print("")
                 #else:
                 else:
                     #While True:
@@ -633,6 +653,7 @@ def fight_room(stat,room,beaten):
             typing("The battle has been fought and the winner has already been decided. There is nothing left to do here...")
 
     elif room == 9:
+        print("\033[31m")
         #if room isn't in beaten list:
         if stat["Win"] >= 2:
             typing("Student council president - I've been expecting you... now, show me why you should be the main character!!!")
@@ -650,7 +671,9 @@ def fight_room(stat,room,beaten):
                     #set attack to the bots strongest
                     attack = "Wisdom"
                     chain = b_wisdom
-                    typing(f"The bot got chosen to pick, and he picked {attack}!")
+                    typing(f"\nThe bot got chosen to pick, and he picked {attack}!")
+                    input("Do you want to acknowledge this?:")
+                    print("")
                 #else:
                 else:
                     #While True:
@@ -723,7 +746,8 @@ while True:
             "Loss": 0,
             "Gold": 0,
             "Used": []}
-    typing("\nIn this game you have been reincarnated back to high school, but theres just one problem... You are a worthless side character who doesn't get anyone!:( With the realization of this you have begone on your journey to defeat the nobles, (people who are actually cool in their feild), and eventually defeat the final boss (Student concil presedent aka the main character) to becoming the main character. You will need to imploy your 3 main stats: Wisdom, Charm, and Strength to battle the enemy, be carefull though, because you will not always chose what stat to attack with. I wish you luck in your journey to become someone your mother would be proud of, but with your looks, brains, and charm that might be a bit hard...")
+    typing("\033[32m\nIn this game you have been reincarnated back to high school, but theres just one problem... You are a worthless side character who doesn't get anyone!:( With the realization of this you have begone on your journey to defeat the nobles, (people who are actually cool in their feild), and eventually defeat the final boss (Student concil presedent aka the main character) to becoming the main character. You will need to imploy your 3 main stats: Wisdom, Charm, and Strength to battle the enemy, be carefull though, because you will not always chose what stat to attack with. I wish you luck in your journey to become someone your mother would be proud of, but with your looks, brains, and charm that might be a bit hard...")
+    typing("The three basic stats(Charm, Wisdom, and Strength) take there stat number and can roll up to that number when attacking, and roll increase your chances of picking by 1 every time.")
     while finished_game == False and failed == False:
     #while game_finished == Fales and failed == False (These are all of the different ways to win or lose.)
         check = lose(stat)
@@ -734,14 +758,13 @@ while True:
         else:
             pass
         #Print a list of room numbers and there base purposes
-        typing("The three basic stats(Charm, Wisdom, and Strength) take there stat number and can roll up to that number when attacking, and roll increase your chances of picking by 1 every time.")
-        typing("\nHere are all of your stats:")
+        typing("\033[33m\nHere are all of your stats:")
         for key, value in stat.items():
             if isinstance(value, list):
                 typing(f"{key}: {', '.join(map(str, value))}")
             else:
                 typing(f"{key}: {value}")
-        typing(f"\nThere are 9 rooms you can go to. \n1. Dorms: This is were you will spend your gold from your hard earned wins to buy stat increases or there are our gucci items. Everything costs 2 gold, you have {stat['Gold']} gold. \n2. Computer lab: contains the nerd enemy \n3. Gym: Contains the Jock enemy. \n4. Lunchroom: contains class clown enemy. \n5. Bathroom: contains the slacker enemy. \n6. Hallway: contains THE CHILL GUY (Don't even think about fighting him). \n7. Auditorium: contains the actor enemy. \n8. Principle's office: contains the bully enemy. \n9. Student counsel room: Contains the final boss called, 'The Student Council President' or the MAIN CHARACTER. To fight him you must beat at least two others first.")
+        typing(f"\033[34m\nThere are 9 rooms you can go to. \n1. Dorms: This is were you will spend your gold from your hard earned wins to buy stat increases or there are our gucci items. Everything costs 2 gold, you have {stat['Gold']} gold. \n2. Computer lab: contains the nerd enemy \n3. Gym: Contains the Jock enemy. \n4. Lunchroom: contains class clown enemy. \n5. Bathroom: contains the slacker enemy. \n6. Hallway: contains THE CHILL GUY (Don't even think about fighting him). \n7. Auditorium: contains the actor enemy. \n8. Principle's office: contains the bully enemy. \n9. Student counsel room: Contains the final boss called, 'The Student Council President' or the MAIN CHARACTER. To fight him you must beat at least two others first.")
         typing("\nThe rooms that have already been visited are:")
         beaten.sort()
         for item in beaten:
