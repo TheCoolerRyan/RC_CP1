@@ -144,4 +144,3 @@ while game_finished == False:
     win(grid, game_finished) 
     if game_finished is True:
         break
-
