@@ -818,4 +818,3 @@ while True:
         typing("\nThe journey is being repeated... good luck...")
     else:
         break
-
